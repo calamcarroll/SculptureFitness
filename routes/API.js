@@ -1,6 +1,7 @@
 var User                   = require('../models/user');
 module.exports = function(router){
 
+    //User registration route
     router.post('/users', function (req, res) {
 
         var user = new User();
@@ -23,6 +24,31 @@ module.exports = function(router){
         });
     }
 });
+
+    //user login routes
+    router.post('/authenticate', function(req,res){
+
+        User.findOne({username:req.body.username}).select('email username password').exec(function(err,user){
+            if(err) throw err;
+            if(!user){
+                res.json({success:false, message:'No such user found!'})
+            }else if (user){
+                if (req.body.password) {
+                    var validatePassword = user.comparePassword(req.body.password);
+                    if (!validatePassword) {
+                        res.json({success : false, message : 'Password incorrect'});
+                    }
+                    else{
+                        res.json({success : true, message : 'User logged in'});
+                    }
+                }
+                else{
+                    res.json({success : false, message : 'No password provided!'});
+                }﻿
+            }
+
+        })
+    });
 
     return router;
 };
