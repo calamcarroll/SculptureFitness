@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Development final year project" content="">
+    <meta name="Calam Carroll" content="">
+
+
+    <!-- ANGULAR FILES RETRIEVED USING CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>
+    <!-- JQUERY LIBRARY FOUND LOCALLY IN ASSETS FOLDER-->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <!-- CDN FOR BOOTSTRAP AMD BOOTSTRAP STYLE SHEET-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Controllers and routes for Angular app-->
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/controllers/userController.js"></script>
+    <script src="app/services/userServices.js"></script>
+
+    <title>Sculpture Fitness</title>
+
+</head>
+
+<body ng-app="SculptureFitness">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+    <div class="container">
+        <a class="navbar-brand" href="#">Sculpture Fitness</a>
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+            &#9776;
+        </button>
+
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Trainer Section</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Marketplace</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Programs and Diets
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Program Finder</a>
+                        <a class="dropdown-item" href="#">My Programs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Diet Finder</a>
+                        <a class="dropdown-item" href="#">My Diets</a>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+
+                <li class="dropdown order-1">
+                    <button type="button" id="dropdownMenu1" href="/login" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right mt-0">
+                        <li class="p-3">
+                            <form class="form" role="form">
+                                <div class="form-group">
+                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit"  class="btn btn-primary btn-block" >Login</button>
+                                </div>
+                                <div class="form-group text-xs-center">
+                                    <small><a href="#">Forgot password?</a></small>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<main role="main">
+
+
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Welcome to Sculpture Fitness</h1>
+            <p>Development edition</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
+
+
+
+    <div class="container"ng-view></div>
+
+    <div style="height: 10px;"></div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Programs</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get in contact with  a PT</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Find a Gym near you</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+
+
+
+</main>
+
+<footer class="container">
+    <p>Sculpture Fitness</p>
+</footer>
+
+
+</body>
+</html>

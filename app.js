@@ -1,30 +1,15 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var mongoose =  require('mongoose');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
-
-mongoose.connect('mongodb://localhost:27017/SculptureFitnessDB',{ useMongoClient: true },function (err) {
-    if(err){
-      console.log('Not connected to database: ' + err)
-    }else{
-      console.log('Connection Successful to Mongo')
-    }
-})
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
+var express                = require('express');
+var path                   = require('path');
+var favicon                = require('serve-favicon');
+var logger                 = require('morgan');
+var cookieParser           = require('cookie-parser');
+var mongoose               =  require('mongoose');
+var router                 = express.Router();
+var appRoutes              = require('./routes/API')(router);
+var bodyParser             = require('body-parser');
+var morgan                 = require('morgan');
+var app                    = express();
+////////////////////////////////////////////////////
 app.use(morgan('dev'));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -32,16 +17,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// app.use('/', index);
-app.use('/users', users);
-
-app.get('/', function(req, res){
-  res.send('Hello request')
+app.use('/api',appRoutes);
+/////////////////////////////////////////////////////
+mongoose.connect('mongodb://localhost:27017/SculptureFitnessDB',{ useMongoClient: true },function (err) {
+    if(err){
+      console.log('Not connected to database: ' + err)
+    }else{
+      console.log('Connection Successful to Mongo')
+    }
 });
-app.get('/home', function(req, res){
-  res.send('Home page')
+
+app.get('*', function (req,res) {
+   res.sendFile(path.join(__dirname + '/public/app/views/index.html'))
 });
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
