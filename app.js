@@ -27,8 +27,8 @@ mongoose.connect('mongodb://localhost:27017/SculptureFitnessDB',{ useMongoClient
     }
 });
 
-app.get('*', function (req,res) {
-   res.sendFile(path.join(__dirname + '/public/app/views/index.html'))
+app.get('/', function (req,res) {
+   res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

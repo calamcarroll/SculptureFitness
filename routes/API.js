@@ -1,4 +1,6 @@
 var User                   = require('../models/user');
+var jwt                    = require('jsonwebtoken');
+var secret                 = 'mySecret';
 module.exports = function(router){
 
     //User registration route
@@ -31,7 +33,7 @@ module.exports = function(router){
         User.findOne({username:req.body.username}).select('email username password').exec(function(err,user){
             if(err) throw err;
             if(!user){
-                res.json({success:false, message:'No such user found!'})
+                res.json({success:false, message:'No such user found!'});
             }else if (user){
                 if (req.body.password) {
                     var validatePassword = user.comparePassword(req.body.password);
@@ -39,7 +41,8 @@ module.exports = function(router){
                         res.json({success : false, message : 'Password incorrect'});
                     }
                     else{
-                        res.json({success : true, message : 'User logged in'});
+                        var token = jwt.sign({username: user.username, email: user.email}, secret, {expiresIn: '24h'});
+                        res.json({success : true, message : 'User logged in', token: token});
                     }
                 }
                 else{
@@ -49,6 +52,24 @@ module.exports = function(router){
 
         })
     });
-
+    router.use(function(req,res,next){
+       var token = req.body.token||req.body.query||req.headers['x-access-token'];
+       if(token){
+           //verify the token
+           jwt.verify(token,'mySecret',function(err,decoded){
+               if(err){
+                   res.json({success:false, message: 'Token was not verified'})
+               }else{
+                   req.decoded = decoded;
+                   next();
+               }
+           })
+       }else{
+           res.json({success:false, message:'token not found'})
+       }
+    });
+    router.post('/currentUser', function(req, res){
+       res.send(req.decoded);
+    });
     return router;
 };
