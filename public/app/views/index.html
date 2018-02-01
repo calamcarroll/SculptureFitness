@@ -20,7 +20,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!--CDN for font awesome icons -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
     <!-- Controllers and routes for Angular app-->
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>
@@ -35,14 +36,22 @@
 
 <!--Main controller is put here instead of in routes because it is for log in and needs to be present all the time to show if logged in -->
 
-<body ng-app="SculptureFitness" ng-controller="mainController as main" ng-show="main.loadme" >
+<body ng-app="SculptureFitness" ng-controller="mainController as main"  >
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 
         <style>
+            .dropdown-menu {
+                width: 300px;
+                height: 300px ;
+            }
         .navbar-text{
             padding-right: 20px;
         }
+            .navbar-nav>li>a.profile-image {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
             .myImg{
                 padding-left: 8px;
                 padding-bottom: 12px;
@@ -52,6 +61,57 @@
             .btn btn-danger btn-md{
 
             }
+        #login-dp{
+            min-width: 250px;
+            padding: 14px 14px 0;
+            overflow:hidden;
+            background-color:rgba(255,255,255,.8);
+        }
+        #login-dp .help-block{
+            font-size:12px
+        }
+        #login-dp .bottom{
+            background-color:rgba(255,255,255,.8);
+            border-top:1px solid #ddd;
+            clear:both;
+            padding:14px;
+        }
+        #login-dp .social-buttons{
+            margin:12px 0
+        }
+        #login-dp .social-buttons a{
+            width: 49%;
+        }
+        #login-dp .form-group {
+            margin-bottom: 10px;
+        }
+        .btn-fb{
+            color: #fff;
+            background-color:#3b5998;
+        }
+        .btn-fb:hover{
+            color: #fff;
+            background-color:#496ebc
+        }
+        .btn-tw{
+            color: #fff;
+            background-color:#55acee;
+        }
+        .btn-tw:hover{
+            color: #fff;
+            background-color:#59b5fa;
+        }
+        @media(max-width:768px) {
+            #login-dp {
+                background-color: inherit;
+                color: #fff;
+            }
+
+            #login-dp .bottom {
+                background-color: inherit;
+                border-top: 0 none;
+            }
+        }
         </style>
         <a class="navbar-brand" href="#" ><a class="" style="color: #1689fc"><h2>S</h2></a><a style="color: #eeeefc"><strong>culpture Fitness</strong></a>
 
@@ -64,9 +124,9 @@
 
         <div class="collapse navbar-collapse" id="exCollapsingNavbar">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/" class="nav-link"><i class="fa fa-home fa-fw"></i> Home</a></li>
                 <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Trainer Section</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-pencil fa-fw"></i> Trainer Section</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Marketplace</a></li>
 
                 <li class="nav-item dropdown">
@@ -93,8 +153,16 @@
 
                 <li class="dropdown">
                     <button type="button" id="dropdownMenu1" href="/login" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">{{main.text}} <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right mt-0">
-                        <li class="p-3">
+                    <ul class="dropdown-menu dropdown-menu-right ">
+                        <div class="container">
+                        <div class="col-md-16">
+                            Login via
+                            <br>
+                            <div class="social-buttons">
+                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                            </div>
+                            or
                             <form class="form" role="form"ng-submit="main.doLogin(loginData);">
                                 <div class="form-group">
                                     <input id="emailInput" placeholder="Username" class="form-control form-control-sm" type="text" required="" ng-model="main.loginData.username">
@@ -105,20 +173,14 @@
                                 </div>
 
 
-                                <div class="btn-group">
-                                    <button type="submit"  class="btn btn-primary btn-md " >Login</button>
-                                    <button type="submit"  class="btn btn-danger btn-md float-sm-left " ng-click="main.logout();" > Log out</button>
+                                <div class="form-group">
+                                    <button type="submit"  class="btn btn-primary btn-block" ng-show="!main.isLoggedIn"><i class="fa fa-sign-in"></i> Login</button>
+                                    <button type="submit"  class="btn btn-danger btn-block " ng-click="main.logout();" ng-show="main.isLoggedIn" ><i class="fa fa-sign-out"></i>Log out</button>
 
                                 </div>
                             </form>
-
-
-
                                 <br>
-
-                                <br>
-
-                        </li>
+                        </div>
                     </ul>
                 </li>
             </ul>
@@ -126,6 +188,7 @@
     </div>
 </nav>
 </div>
+
 
 <main role="main">
 

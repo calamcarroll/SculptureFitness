@@ -2,21 +2,23 @@ angular.module('mainController', ['authServices'])
 .controller('mainController', function(Auth,$timeout,$location,$route,$window){
 
 var app = this;
-app.loadme =false;
+
 if(Auth.isLoggedIn()){
 
     console.log('Logged in');
+    app.isLoggedIn = true;
     Auth.getUser().then(function (data) {
         console.log(data.data.username);
         app.username = data.data.username;
         app.email = data.data.email;
-        app.loadme=true;
         app.text = 'logout';
+
 
 
     })
 }else{
     app.text ='log in';
+    app.isLoggedIn = false;
     console.log('Not logged in')
 }
 
