@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,9 +20,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <!--CDN for font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+
     <!-- Controllers and routes for Angular app-->
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>
@@ -30,13 +33,16 @@
     <script src="app/controllers/mainController.js"></script>
     <script src="app/services/authServices.js"></script>
 
+
+
+
     <title>Sculpture Fitness</title>
 
 </head>
 
 <!--Main controller is put here instead of in routes because it is for log in and needs to be present all the time to show if logged in -->
 
-<body ng-app="SculptureFitness" ng-controller="mainController as main"  >
+<body ng-app="SculptureFitness" ng-controller= "mainController as main" ng-show="main.loadme" >
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 
@@ -93,6 +99,14 @@
             color: #fff;
             background-color:#496ebc
         }
+            .btn-gm{
+                color: #fff;
+                background-color:#db3236;
+                }
+            .btn-gm:hover{
+                color: #fff;
+                background-color:#db3236;
+                }
         .btn-tw{
             color: #fff;
             background-color:#55acee;
@@ -101,6 +115,7 @@
             color: #fff;
             background-color:#59b5fa;
         }
+
         @media(max-width:768px) {
             #login-dp {
                 background-color: inherit;
@@ -127,7 +142,7 @@
                 <li class="nav-item"><a href="/" class="nav-link"><i class="fa fa-home fa-fw"></i> Home</a></li>
                 <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-pencil fa-fw"></i> Trainer Section</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Marketplace</a></li>
+                <li class="nav-item"><a href="/marketplace" class="nav-link">Marketplace</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,8 +174,9 @@
                             Login via
                             <br>
                             <div class="social-buttons">
-                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                                <button type="button" ng-click="main.facebook()" class="btn btn-fb"><i class="fa fa-facebook"></i></button>
+                                <button type="button" ng-click="main.twitter()" class="btn btn-tw"><i class="fa fa-twitter"></i></button>
+                                <button type="button" ng-click="main.google()" class="btn btn-gm"><i class="fa fa-google"></i></button>
                             </div>
                             or
                             <form class="form" role="form"ng-submit="main.doLogin(loginData);">
@@ -175,10 +191,12 @@
 
                                 <div class="form-group">
                                     <button type="submit"  class="btn btn-primary btn-block" ng-show="!main.isLoggedIn"><i class="fa fa-sign-in"></i> Login</button>
-                                    <button type="submit"  class="btn btn-danger btn-block " ng-click="main.logout();" ng-show="main.isLoggedIn" ><i class="fa fa-sign-out"></i>Log out</button>
+
 
                                 </div>
                             </form>
+
+                            <button type="submit"  class="btn btn-danger btn-block " ng-click="main.logout();" ng-show="main.isLoggedIn" ><i class="fa fa-sign-out"></i>Log out</button>
                                 <br>
                         </div>
                     </ul>

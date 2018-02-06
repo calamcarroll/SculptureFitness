@@ -1,11 +1,84 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html ng-app="SculptureFitness">
+<head>
+    <title>SculptureFitness</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-route.js"></script>
+    <!--Google maps Api key here -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzoWVJ7tsPNeXmqVnUtPkcEJJUb70F02g&callback=initMap"></script>-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="/javascripts/angularApp.js"></script>
+    <script src="/javascripts/controllers/mainController.js"></script>
+    <script src="/javascripts/controllers/programsController.js"></script>
+    <script src="/javascripts/controllers/addProgramsController.js"></script>
+    <script src="/javascripts/controllers/findGymController.js"></script>
+    <script src="/javascripts/controllers/dietController"></script>
+    <script src="/javascripts/controllers/updateController.js"></script>
+    <script src="/javascripts/controllers/updateDietController.js"></script>
+    <script src="/javascripts/controllers/addDietController.js"></script>
+    <script src="/javascripts/controllers/registerController.js"></script>
+    <script src="/javascripts/controllers/loginController.js"></script>
+
+
+</head>
+
+
+<body ng-controller="mainController">
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Sculpture Fitness</a>
+        </div>
+        <ul class="nav navbar-nav">
+
+
+            <li class="dropdown" uib-dropdown>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#programs" uib-dropdown-toggle>Programs<span
+                            class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#addProgram">Create Programs</a></li>
+                </ul>
+
+
+            </li>
+            <!--<li><a href="#addProgram"><i class="active"></i> Add Program</a></li>-->
+
+            <li class="dropdown" uib-dropdown>
+                <a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle href="#diet">Diet<span
+                            class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#addDiet">Create Diet</a></li>
+                </ul>
+            </li>
+            <li><a href="#findGym">Find a gym</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- MAIN CONTENT AND INJECTED VIEWS -->
+<div id="main">
+
+
+    <div ng-view></div>
+
+</div> <!-- End of main div -->
+<footer class="text-center">
+    <p>For more projects view my work on <a href="https://github.com/calamcarroll">GitHub</a></p>
+</footer>
+
+</body>
 </html>

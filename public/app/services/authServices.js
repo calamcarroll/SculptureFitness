@@ -8,6 +8,7 @@ angular.module('authServices', [])
         return $http.post('/api/authenticate', loginData).then(function(data){
           console.log(data.data.token);
 
+
               AuthToken.setToken(data.data.token);
               $window.location.reload();
               return data;
@@ -24,6 +25,9 @@ angular.module('authServices', [])
            return false;
        }
     };
+    authFactory.facebook = function(token) {
+        AuthToken.setToken(token);
+    };
 
     authFactory.getUser = function () {
       if(AuthToken.getToken()){
@@ -35,7 +39,7 @@ angular.module('authServices', [])
 
     authFactory.logout = function(){
        AuthToken.setToken();
-        $window.location.reload();
+        // $window.location.reload();
     };
     return authFactory;
 })
@@ -45,6 +49,7 @@ angular.module('authServices', [])
       authTokenFactory.setToken = function (token) {
           if(token){
               $window.localStorage.setItem('token',token);
+
           }else{
               $window.localStorage.removeItem('token');
           }
@@ -55,14 +60,16 @@ angular.module('authServices', [])
       };
 
       return authTokenFactory;
+
     })
 .factory('authIntercept',function (AuthToken) {
+
      var authInterceptFactory = {};
 
     authInterceptFactory.request = function (config) {
 
         var token = AuthToken.getToken();
-        //assigns tokens to the headers so that it can be grabbed at the front end 
+        //assigns tokens to the headers so that it can be grabbed at the front end
         if(token) config.headers['x-access-token'] = token;
        return config;
     };
