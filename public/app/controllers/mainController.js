@@ -70,12 +70,14 @@ angular.module('mainController', ['authServices'])
         // User presses log out and uses Auth.logout to remove the token.
         this.logout = function () {
             Auth.logout();
-            // Redirecting the user to the logout page
-            $location.path('/logout');
             // Redirecting the user back to the home page.
-            $timeout(function() {
-                $location.path('/');
-            }, 2000);
+
+                $timeout(function() {
+                    $location.path('/');
+                    window.location.reload()
+                }, 2000);
+
+
         };
     });
 
