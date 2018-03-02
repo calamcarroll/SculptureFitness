@@ -4,11 +4,14 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
 
     $routeProvider
         .when('/',{
-        templateUrl: 'app/views/pages/home.html'
+        templateUrl: 'app/views/pages/general/home.html'
+        })
+        .when('/marketplace',{
+            templateUrl: 'app/views/pages/trainers/marketplace.html'
         })
 
         .when('/about',{
-            templateUrl: 'app/views/pages/about.html'
+            templateUrl: 'app/views/pages/general/about.html'
         })
         .when('/register',{
             templateUrl: 'app/views/pages/users/register.html',
@@ -23,7 +26,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/facebook/:token', {
-            templateUrl: 'app/views/pages/users/social/social.html',
+            templateUrl: 'app/views/pages/users/profile.html',
             controller: 'facebookCtrl',
             controllerAs: 'facebook'
         })
@@ -36,7 +39,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/twitter/:token',{
-            templateUrl: 'app/views/pages/users/social/social.html',
+            templateUrl: 'app/views/pages/users/profile.html',
             controller: 'twitterCtrl',
             controllerAs: 'twitter',
             authenticated: false
@@ -50,7 +53,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/google/:token',{
-            templateUrl: 'app/views/pages/users/social/social.html',
+            templateUrl: 'app/views/pages/users/profile.html',
             controller: 'twitterCtrl',
             controllerAs: 'twitter',
             authenticated: false
