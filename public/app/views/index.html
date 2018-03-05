@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-animate.js"></script>
     <!-- JQUERY LIBRARY FOUND LOCALLY IN ASSETS FOLDER-->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <!-- CDN FOR BOOTSTRAP AMD BOOTSTRAP STYLE SHEET-->
+    <!-- CDN FOR BOOTSTRAP AMD BOOTSTRAP STYLE SHEET-->z
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
@@ -23,7 +23,7 @@
     <!--CDN for font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Customer CSS for website-->
-    <link rel="stylesheet" href="public/assets/css/style.css">
+    <!--<link rel="stylesheet" href="public/assets/css/style.css">-->
     <!-- Controllers and routes for Angular app-->
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>
@@ -35,7 +35,7 @@
     <title>Sculpture Fitness</title>
 </head>
 <!--Main controller is put here instead of in routes because it is for log in and needs to be present all the time to show if logged in -->
-<body ng-app="SculptureFitness" ng-controller= "mainController as main" ng-show="main.loadme" >
+<body ng-app="SculptureFitness" ng-controller= "mainController as main">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
         <a class="navbar-brand" href="#" ><a class="" style="color: #1689fc"><h2>S</h2></a><a style="color: #eeeefc"><strong>culpture Fitness</strong></a><img src="images/dumbbell.png" class="myImg"></a>
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">&#9776;</button>
@@ -60,9 +60,10 @@
             <!--Right side of NavBar-->
             <ul class="nav navbar-nav justify-content-between ml-auto">
                 <li class="navbar-text"><a href="/profile"><span class="fa fa-user"></span> {{main.username}}</a></li>
+
                 <li class="dropdown">
                     <button type="submit"  class="btn btn-outline-secondary dropdown-toggle" ng-click="main.logout();" ng-show="main.isLoggedIn" ><i class="fa fa-sign-out"></i>Log out</button>
-                    <button type="button" id="dropdownMenu1" href="/login" data-toggle="dropdown" ng-show="!main.isLoggedIn" class="btn btn-outline-secondary dropdown-toggle">{{main.text}} <span class="caret"></span></button>
+                    <button type="button" id="dropdownMenu1" href="/login" data-toggle="dropdown" ng-show="!main.isLoggedIn" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right ">
                         <div class="container">
                         <div class="col-md-16">
@@ -83,7 +84,7 @@
                                     <small><a href="/register">Register here</a></small>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit"  class="btn btn-primary btn-block" ng-show="!main.isLoggedIn"><i class="fa fa-sign-in"></i> Login</button>
+                                    <button type="submit"  class="btn btn-primary btn-block"><i class="fa fa-sign-in"></i> Login</button>
                                 </div>
                             </form>
                           </div>

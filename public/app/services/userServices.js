@@ -1,6 +1,5 @@
 angular.module('userServices',[])
-
-    .factory('user', function($http){
+    .factory('User', function($http){
         userFactory = {};
 
         userFactory.create = function (regData) {

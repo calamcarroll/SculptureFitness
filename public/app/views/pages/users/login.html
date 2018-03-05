@@ -7,9 +7,13 @@
         color: #fff;
         background-color:#3b5998;
     }
+
     .btn-fb:hover{
         color: #fff;
         background-color:#496ebc
+    }
+    body{
+       background-image: url("http://pro-fitness.in/wp-content/uploads/2016/09/0a5503c0_shutterstock_86502877.xxxlarge_2x.jpg");
     }
     .btn-gm{
         color: #fff;
@@ -29,6 +33,7 @@
     }
 
 </style>
+<div class = jumbotron>
 <form ng-submit="main.doLogin(loginData);">
 
      Username
@@ -58,14 +63,14 @@
 </div>
 <br>
 
-<div class="row show-hide-message" ng-show="main.successMsg">
-    <div class="alert alert-success"> {{ login.successMsg }}</div>
+<div class="row show-hide-message" ng-show="main.Success">
+    <div class="alert alert-success"> {{ main.Success }}</div>
 </div>
 
 <br>
 
-<div class="row show-hide-message" ng-show="login.errorMsg">
-    <div class="alert alert-danger"> {{ login.errorMsg }}</div>
+<div class="row show-hide-message" ng-show="login.error">
+    <div class="alert alert-danger"> {{ main.error }}</div>
 </div>
 
 <!-- Facebook error message -->
@@ -83,3 +88,4 @@
     <div class="alert alert-danger"> {{ google.errorMsg }}</div>
 </div>
 
+</div>

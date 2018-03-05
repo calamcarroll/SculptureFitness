@@ -1,29 +1,21 @@
 angular.module('userController', ['userServices'])
-
     .controller('registerController', function($http, $location, $timeout, User) {
-
         var app = this;
-
-        this.regUser = function(regData) {
-            app.loading = true;
-            app.errorMsg = false;
-
+        app.regUser = function(regData) {
+            app.error = false;
             User.create(app.regData).then(function(data) {
                 if (data.data.success){
-                    app.loading = false;
-                    // Create Success Msg
-                    app.successMsg = data.data.message + ' Redirecting.';
-                    // Redirect to Home Page
+                    app.Success = data.data.message + ' Redirecting.';
                     $timeout(function() {
-                        $location.path('/');
+                        $location.path('/login');
+                        app.error = false;
+                        app.Success = false
                     }, 2000);
                 } else {
-                    // Creating Error Msg
-                    app.loading = false;
-                    app.errorMsg = data.data.message;
+                    app.error = data.data.message;
                 }
-            });
-        };
+            })
+        }
     })
 
     .controller('facebookCtrl', function($routeParams, $location, Auth, $window) {
