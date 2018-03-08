@@ -50,41 +50,9 @@
                         </a>
                     </li>
                 </ul>
-
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>My Trainer</span>
-                    <a class="d-flex align-items-center text-muted" href="#">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Request a program
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Contact Trainer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Find a Trainer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Gym Prices
-                        </a>
-                    </li>
-                </ul>
             </div>
         </nav>
+
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -102,7 +70,7 @@
             </div>
             <style>
                 .btn{
-                    margin-left: 450px;
+                    margin-left: 350px;
                 }
             </style>
             <div ng-controller="mainController as user" >
@@ -115,14 +83,6 @@
                                        class="form-control"
                                        ng-model="formData.username"
                                        placeholder="Username"
-                                       ng-style="{'width': 500 + 'px'}"
-                                       required="true">
-                            </div>
-                            <div class="form-group" align="center">
-                                <input type="password"
-                                       class="form-control"
-                                       placeholder="Password"
-                                       ng-model="formData.password"
                                        ng-style="{'width': 500 + 'px'}"
                                        required="true">
                             </div>
@@ -176,7 +136,7 @@
                     </div>
                 </div>
             </div>
+        </main>
 
-            <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-
+</div>
 </body>

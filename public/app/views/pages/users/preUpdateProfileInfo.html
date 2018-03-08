@@ -1,0 +1,207 @@
+<body>
+<style>
+    #inner-nav{
+        border-radius: 50px;
+    }
+    .img{
+        width:400px;
+        height:300px;
+    }
+    .img {
+        border-radius: 8px;
+    }
+    .img:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+
+    }
+
+    .col-sm-6 {
+        position: relative;
+
+    }
+
+    .img {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%)
+    }
+
+    .col-sm-6:hover .img {
+        opacity: 0.3;
+    }
+
+    .col-sm-6:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: rgba(238, 238, 252, 0.18);
+        color: #295ae1;
+        font-size: 16px;
+
+    }
+    .p{
+        padding-left:420px;
+    }
+</style>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" id="inner-nav">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            My Programs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="shopping-cart"></span>
+                            Remove Programs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="users"></span>
+                            Track my Progress
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//preUpdateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                            <span data-feather="bar-chart-2"></span>
+                            Update Profile Info
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                            <span data-feather="bar-chart-2"></span>
+                            Update Password
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="layers"></span>
+                            Diets and More
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button class="btn btn-sm btn-outline-secondary">Export</button>
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <span data-feather="calendar"></span>
+                        This week
+                    </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                            <img src="images/profile-icon.png" class="img">
+                            <div class="middle">
+                                <div class="text">Update Profile Info</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a data-toggle="modal" data-target="#myModal"  ng-click="main.getUserInfo(main.userId);">
+                            <img src="images/password_change.png" class="img">
+                            <div class="middle">
+                                <div class="text">Update Password</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h4 class="modal-title">Change your Password</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div ng-controller="mainController as user" >
+                                <div class="row">
+                                    <div class="container">
+                                        <form ng-submit="user.updateProfile();">
+                                            <div class="form-group" align="center">
+                                                <input type="password"
+                                                       class="form-control"
+                                                       ng-model="formData.password"
+                                                       placeholder="New Password"
+                                                       ng-style="{'width': 350 + 'px'}"
+                                                       required="true">
+                                            </div>
+                                            <button type="submit" id="btn"class="btn btn-info">Update Profile <span class="fa fa-edit"></span></button>
+                                            <style>
+                                                #btn{
+                                                    margin-left: 150px;
+                                                }
+                                            </style>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+
+        </main>
+    </div>
+</div>
+
+</body>

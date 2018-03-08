@@ -36,14 +36,17 @@ module.exports = function(router){
                 user.weight = req.body.weight;
                 user.height = req.body.height;
                 user.bodyFat = req.body.bodyFat;
-                user.save(function (err) {
-                    if(err){
-                        res.send("User could not be saved: " + err);
-                    }else{
-                        res.send("User has been successfully updated");
-                    }
-                })
-
+                bcrypt.hash(user.password, null, null, function(err,hash) {
+                    if (err) return next(err);
+                    user.password = hash;
+                    user.save(function (err) {
+                        if(err){
+                            res.send("User could not be saved: " + err);
+                        }else{
+                            res.send("User has been successfully updated");
+                        }
+                    })
+                });
             }
         })
     });
@@ -56,7 +59,9 @@ module.exports = function(router){
             user.email         = req.body.email;
             user.isPersonalTrainer = req.body.isPersonalTrainer;
 
-        if(req.body.username == null || req.body.username === ''|| req.body.password == null || req.body.password ===''|| req.body.email == null || req.body.email === ''){
+        if(req.body.username == null || req.body.username === '' ||
+            req.body.password == null || req.body.password ===''||
+            req.body.email == null || req.body.email === ''){
 
             res.json({success: false, message: '\'Please provide all required fields\''})
         }else{

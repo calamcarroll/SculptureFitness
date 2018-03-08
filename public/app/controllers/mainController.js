@@ -53,16 +53,12 @@ angular.module('mainController', ['authServices'])
                }else{
                    $timeout(function () {
                        $location.path('/profile');
+                       window.location.reload();
                    },2000);
-
                }
-
             });
-
-
-            console.log(id);
-            console.log($scope.formData);
         };
+
 
 
         // Used to stop Facebook opening multiple windows.

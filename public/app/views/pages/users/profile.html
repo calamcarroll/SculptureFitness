@@ -3,6 +3,7 @@
     #inner-nav{
         border-radius: 50px;
     }
+
 </style>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" id="inner-nav">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}</a>
@@ -43,11 +44,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                        <a class="nav-link" href="/preUpdateProfileInfo" >
                             <span data-feather="bar-chart-2"></span>
                             Update Profile Info
+
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                            <span data-feather="bar-chart-2"></span>
+                            Update Password
+
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="layers"></span>
@@ -56,38 +66,7 @@
                     </li>
                 </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>My Trainer</span>
-                    <a class="d-flex align-items-center text-muted" href="#">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Request a program
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Contact Trainer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Find a Trainer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Gym Prices
-                        </a>
-                    </li>
-                </ul>
+
             </div>
         </nav>
 
