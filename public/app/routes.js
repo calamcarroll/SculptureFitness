@@ -1,6 +1,17 @@
-angular.module('SculptureFitnessRoutes', ['ngRoute'])
-
-.config(function($routeProvider,$locationProvider){
+var app = angular.module('SculptureFitnessRoutes', ['ngRoute']);
+app.service('userUpdateService', function(){
+    var userUpdateService = {
+        username:'',
+        password:'',
+        email:'',
+        weight:'',
+        height:'',
+        bodyFat:'',
+        gymOfChoice:''
+    };
+    return userUpdateService;
+});
+app.config(function($routeProvider,$locationProvider){
 
     $routeProvider
         .when('/',{
@@ -9,17 +20,22 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         .when('/marketplace',{
             templateUrl: 'app/views/pages/trainers/marketplace.html'
         })
-
+        .when('/trainerLogin',{
+            templateUrl: 'app/views/pages/trainers/trainerLogin.html'
+        })
         .when('/about',{
             templateUrl: 'app/views/pages/general/about.html'
+        })
+        .when('/updateProfileInfo',{
+            templateUrl: 'app/views/pages/users/updateProfileInfo.html'
         })
         .when('/register',{
             templateUrl: 'app/views/pages/users/register.html',
             controller:'registerController',
             controllerAs: 'register'
         })
-        .when('/login',{
-            templateUrl: 'app/views/pages/users/login.html'
+        .when('/clientLogin',{
+            templateUrl: 'app/views/pages/users/clientLogin.html'
         })
         .when('/profile',{
             templateUrl:'app/views/pages/users/profile.html'
@@ -32,7 +48,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/facebookerror',{
-            templateUrl: 'app/views/pages/users/login.html',
+            templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'facebookCtrl',
             controllerAs: 'facebook',
             authenticated: false
@@ -46,7 +62,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/twittererror',{
-            templateUrl: 'app/views/pages/users/login.html',
+            templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'twitterCtrl',
             controllerAs: 'twitter',
             authenticated: false
@@ -60,7 +76,7 @@ angular.module('SculptureFitnessRoutes', ['ngRoute'])
         })
 
         .when('/googleerror',{
-            templateUrl: 'app/views/pages/users/login.html',
+            templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'googleCtrl',
             controllerAs: 'google',
             authenticated: false

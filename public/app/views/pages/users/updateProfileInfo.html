@@ -1,10 +1,5 @@
 <body>
-<style>
-    #inner-nav{
-        border-radius: 50px;
-    }
-</style>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" id="inner-nav">
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}</a>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
@@ -45,7 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
                             <span data-feather="bar-chart-2"></span>
-                            Update Profile Info
+                            Change Profile Info
                         </a>
                     </li>
                     <li class="nav-item">
@@ -105,36 +100,82 @@
                     </button>
                 </div>
             </div>
+            <style>
+                .btn{
+                    margin-left: 450px;
+                }
+            </style>
+            <div ng-controller="mainController as user" >
+                <div class="row">
+                    <div class="container">
+                        <form ng-submit="">
+                            <div class="form-group" align="center">
+                                <h3>Update your profile here!</h3>
+                                <input type="text"
+                                       class="form-control"
+                                       ng-model="formData.username"
+                                       placeholder="Username"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <input type="password"
+                                       class="form-control"
+                                       placeholder="Password"
+                                       ng-model="formData.password"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <input type="email"
+                                       class="form-control"
+                                       placeholder="Email"
+                                       ng-model="formData.email"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <input type="number"
+                                       class="form-control"
+                                       ng-model="formData.weight"
+                                       placeholder="Weight (kg)"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <input type="number"
+                                       class="form-control"
+                                       placeholder="Height (cm)"
+                                       ng-model="formData.height"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <input type="number"
+                                       class="form-control"
+                                       placeholder="Body Fat %"
+                                       ng-model="formData.bodyFat"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                            </div>
+                            <div class="form-group" align="center">
+                                <select type="text"
+                                       class="form-control"
+                                       placeholder="Gym of Choice"
+                                       ng-model="formData.gymOfChoice"
+                                       ng-style="{'width': 500 + 'px'}"
+                                       required="true">
+                                    <option>Kingfisher Club Waterford</option>
+                                    <option>GoldStone Gym & Fitness Waterford</option>
+                                    <option>Ben Dunne Gym Waterford</option>
+                                    <option>Crystal Sport & Leisure Center</option>
+                            </div>
+                            <button type="submit" id="btn"class="btn btn-info">Update Profile <span class="fa fa-edit"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-
-            <h2>Track my Progress</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>Date of Entry</th>
-                        <th>Weight</th>
-                        <th>Height</th>
-                        <th>Body Fat</th>
-                        <th>Workouts completed so far</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>06/03/2018</td>
-                        <td>105kg</td>
-                        <td>207cm</td>
-                        <td>19%</td>
-                        <td></td>
-                    </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
-    </div>
-</div>
-
 
 </body>

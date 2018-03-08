@@ -1,25 +1,49 @@
 angular.module('mainController', ['authServices'])
-    .controller('mainController', function(Auth, $timeout, $location, $rootScope, $window) {
+    .controller('mainController', function(Auth, $timeout,$scope, $location, $rootScope, $window,userUpdateService) {
         var app = this;
 
-        $rootScope.$on('$routeChangeStart', function() {
 
+        $rootScope.$on('$routeChangeStart', function() {
             // When the page loads we invoke the isLoggedIn function it gets the token and if it is there it returns true.
             if (Auth.isLoggedIn()) {
                     Auth.getUser().then(function(data){
                     app.username = data.data.username;
                     app.email = data.data.email;
-                    console.log(app.username);
+                    app.userId = data.data.userId;
+                    app.isPersonalTrainer = data.data.isPersonalTrainer;
                     app.isLoggedIn = true;
                 });
             } else {
                 app.isLoggedIn = false;
                 app.username = '';
 
-            }
-            // Removing characters Facebook log in adds to URL.
+            }// Removing characters Facebook log in adds to URL.
             if ($location.hash() === '_=_') $location.hash(null);
         });
+        this.getUserInfo = function(id){
+                Auth.getUserInfo(id).then(function(data){
+
+                userUpdateService.username = data.data.username;
+                userUpdateService.password = data.data.password;
+                userUpdateService.email = data.data.email;
+                userUpdateService.weight = data.data.weight;
+                userUpdateService.height = data.data.height;
+                userUpdateService.bodyFat = data.data.bodyFat;
+                userUpdateService.gymOfChoice = data.data.gymOfChoice;
+
+                    $scope.formData = {};
+                    $scope.formData.username = userUpdateService.username;
+                    $scope.formData.password = userUpdateService.password;
+                    $scope.formData.email = userUpdateService.email;
+                    $scope.formData.weight = userUpdateService.weight;
+                    $scope.formData.height = userUpdateService.height;
+                    $scope.formData.bodyFat = userUpdateService.bodyFat;
+                    $scope.formData.gymOfChoice = userUpdateService.gymOfChoice;
+
+                });
+
+        };
+
 
         // Used to stop Facebook opening multiple windows.
         this.facebook = function() {

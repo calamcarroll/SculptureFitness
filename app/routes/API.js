@@ -31,8 +31,9 @@ module.exports = function(router){
             user.username      = req.body.username;
             user.password      = req.body.password;
             user.email         = req.body.email;
+            user.isPersonalTrainer = req.body.isPersonalTrainer;
 
-        if(req.body.username == null || req.body.username == ''|| req.body.password == null || req.body.password ==''| req.body.email == null || req.body.email == ''){
+        if(req.body.username == null || req.body.username == ''|| req.body.password == null || req.body.password ==''|| req.body.email == null || req.body.email == ''){
 
             res.json({success: false, message: '\'Please provide all required fields\''})
         }else{
@@ -47,10 +48,20 @@ module.exports = function(router){
             });
         }
      });
+    //Gets all the information on the current user logged in
+    router.get('/getUserInfo/:id', function(req,res){
+        User.findById(req.params.id, function(err,data){
+            if(data){
+                res.json(data)
+            }else{
+                res.json(err);
+            }
+        })
+    });
 
     //user login routes
     router.post('/authenticate', function(req,res){
-        User.findOne({username:req.body.username}).select('email username password').exec(function(err,user){
+        User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id').exec(function(err,user){
             if(err) throw err;
                 if(!user){
                     res.json({success:false, message:'No such user found!'});
@@ -60,7 +71,7 @@ module.exports = function(router){
                         if (!validatePassword) {
                             res.json({success : false, message : 'Password incorrect'});
                         }else{
-                            var token = jwt.sign({username: user.username, email: user.email}, secret, {expiresIn: '24h'});
+                            var token = jwt.sign({username: user.username, email: user.email, isPersonalTrainer: user.isPersonalTrainer, userId: user._id}, secret, {expiresIn: '24h'});
                             res.json({success : true, message : 'User logged in', token: token});
                         }
                     }else{

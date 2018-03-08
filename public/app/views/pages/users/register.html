@@ -1,22 +1,50 @@
-<div class="page-header">
-    <h1>User Registration</h1>
-</div>
-<div class="container">
-    <form ng-submit="register.regUser(regData);">
-        <!-- Email -->
-        <label>Email</label>
-        <input class="form-control" type="email" name="email" placeholder="Please Enter Email" ng-model="register.regData.email">
-        <br>
-        <!-- Username -->
-        <label>Username</label>
-        <input class="form-control" type="text" name="username" placeholder="Please Enter Username" ng-model="register.regData.username">
-        <br>
-        <!-- Password -->
-        <label>Password</label>
-        <input class="form-control" type="password" name="password" placeholder="Please Enter Password" ng-model="register.regData.password">
-        <br>
+<style>
+    .registerContainer{
+        width: 400px;
+        height:400px;
+        margin-left: 350px;
+    }
+    body{
+        background-image: url("https://www.fitness.com/images/new/banner-1.jpg");
+    }
+    #register{
 
-        <button class="btn btn-primary" type="submit">Register</button>
+    }
+</style>
+<div class="container">
+    <div class="text-center">
+        <h2>Registration</h2>
+        <h5>Lets get you signed up!</h5>
+    </div>
+    <br>
+    <div class="registerContainer">
+    <form ng-submit="register.regUser(regData);">
+        <input class="form-control" type="email" name="email" placeholder="Email" ng-model="register.regData.email">
+        <br>
+        <input class="form-control" type="text" name="username" placeholder="Username" ng-model="register.regData.username">
+        <br>
+        <input class="form-control" type="password" name="password" placeholder="Password" ng-model="register.regData.password">
+        <br>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="isAdmin" ng-model="register.regData.isPersonalTrainer">Personal Trainer</label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <script>
+            $(function(){
+                $('#myModal').on('show.bs.modal', function(){
+                    var myModal = $(this);
+                    clearTimeout(myModal.data('hideInterval'));
+                    myModal.data('hideInterval', setTimeout(function(){
+                        myModal.modal('hide');
+                    }, 3000));
+                });
+            });
+        </script>
+        <button class="btn btn-primary" id="register" data-toggle="modal" data-target="#myModal" type="submit">Register</button>
     </form>
     <br>
     <div class="row show-hide-message" ng-show="register.Success">
@@ -26,10 +54,18 @@
     <div class="row show-hide-message" ng-show="register.error">
         <div class="alert alert-danger">{{register.error}}</div>
     </div>
-
 </div>
 
-
-
-
-
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="text-center" >Complete Your Profile</h4>
+            </div>
+            <div class="modal-body">
+                <p>Go to <a href="/updateProfileInfo"> Profile </a>to finish adding all your information</p>
+            </div>
+        </div>
+    </div>
+</div>

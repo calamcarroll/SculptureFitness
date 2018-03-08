@@ -7,7 +7,7 @@ angular.module('userController', ['userServices'])
                 if (data.data.success){
                     app.Success = data.data.message + ' Redirecting.';
                     $timeout(function() {
-                        $location.path('/login');
+                        $location.path('/home');
                         app.error = false;
                         app.Success = false
                     }, 2000);
