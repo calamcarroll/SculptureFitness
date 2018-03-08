@@ -25,6 +25,13 @@ angular.module('authServices', [])
             return users
         })
     };
+    authFactory.updateProfileInfo = function (id, formData) {
+        return $http.put('api/updateProfileInfo/' + id, formData).then(function(users){
+            return users
+        })
+    };
+
+
 
     authFactory.getUser = function () {
       if(AuthToken.getToken()){

@@ -108,7 +108,7 @@
             <div ng-controller="mainController as user" >
                 <div class="row">
                     <div class="container">
-                        <form ng-submit="">
+                        <form ng-submit="user.updateProfile();">
                             <div class="form-group" align="center">
                                 <h3>Update your profile here!</h3>
                                 <input type="text"
@@ -169,6 +169,7 @@
                                     <option>GoldStone Gym & Fitness Waterford</option>
                                     <option>Ben Dunne Gym Waterford</option>
                                     <option>Crystal Sport & Leisure Center</option>
+                                </select>
                             </div>
                             <button type="submit" id="btn"class="btn btn-info">Update Profile <span class="fa fa-edit"></span></button>
                         </form>

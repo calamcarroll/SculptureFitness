@@ -20,6 +20,7 @@ angular.module('mainController', ['authServices'])
             }// Removing characters Facebook log in adds to URL.
             if ($location.hash() === '_=_') $location.hash(null);
         });
+
         this.getUserInfo = function(id){
                 Auth.getUserInfo(id).then(function(data){
 
@@ -30,6 +31,7 @@ angular.module('mainController', ['authServices'])
                 userUpdateService.height = data.data.height;
                 userUpdateService.bodyFat = data.data.bodyFat;
                 userUpdateService.gymOfChoice = data.data.gymOfChoice;
+                userUpdateService.userId = id;
 
                     $scope.formData = {};
                     $scope.formData.username = userUpdateService.username;
@@ -40,8 +42,26 @@ angular.module('mainController', ['authServices'])
                     $scope.formData.bodyFat = userUpdateService.bodyFat;
                     $scope.formData.gymOfChoice = userUpdateService.gymOfChoice;
 
-                });
 
+                });
+        };
+        this.updateProfile = function(){
+            var id = userUpdateService.userId;
+            Auth.updateProfileInfo(id,$scope.formData).then(function(data){
+               if(!data){
+                   console.log("There has been an error with this update")
+               }else{
+                   $timeout(function () {
+                       $location.path('/profile');
+                   },2000);
+
+               }
+
+            });
+
+
+            console.log(id);
+            console.log($scope.formData);
         };
 
 

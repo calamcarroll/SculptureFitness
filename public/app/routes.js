@@ -7,7 +7,8 @@ app.service('userUpdateService', function(){
         weight:'',
         height:'',
         bodyFat:'',
-        gymOfChoice:''
+        gymOfChoice:'',
+        userId: ''
     };
     return userUpdateService;
 });

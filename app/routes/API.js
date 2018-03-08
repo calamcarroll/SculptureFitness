@@ -1,7 +1,8 @@
 var User                   = require('../models/user');
-var Gym                   = require('../models/gyms');
+var Gym                    = require('../models/gyms');
 var jwt                    = require('jsonwebtoken');
 var secret                 = 'mySecret';
+var bcrypt                 = require('bcrypt-nodejs');
 module.exports = function(router){
 
     //Route for adding a new gym
@@ -24,6 +25,28 @@ module.exports = function(router){
         })
 
     });
+    router.put('/updateProfileInfo/:id', function(req,res){
+        User.findById(req.params.id,function (err, user) {
+            if(err){
+                res.send('There has been as error: ' + err )
+            }else{
+                user.username = req.body.username;
+                user.password = req.body.password;
+                user.email = req.body.email;
+                user.weight = req.body.weight;
+                user.height = req.body.height;
+                user.bodyFat = req.body.bodyFat;
+                user.save(function (err) {
+                    if(err){
+                        res.send("User could not be saved: " + err);
+                    }else{
+                        res.send("User has been successfully updated");
+                    }
+                })
+
+            }
+        })
+    });
 
     //User registration route
     router.post('/users', function (req, res) {
@@ -33,19 +56,26 @@ module.exports = function(router){
             user.email         = req.body.email;
             user.isPersonalTrainer = req.body.isPersonalTrainer;
 
-        if(req.body.username == null || req.body.username == ''|| req.body.password == null || req.body.password ==''|| req.body.email == null || req.body.email == ''){
+        if(req.body.username == null || req.body.username === ''|| req.body.password == null || req.body.password ===''|| req.body.email == null || req.body.email === ''){
 
             res.json({success: false, message: '\'Please provide all required fields\''})
         }else{
-            user.save(function(err){
-                if(err){
 
-                    res.json({success: false, message: '\'User already exists with this username or email\''})
-                }else{
+            bcrypt.hash(user.password, null, null, function(err,hash){
+                if(err)return next(err);
+                user.password = hash;
+                user.save(function(err){
+                    if(err){
 
-                    res.json({success:true, message:'User created!'})
-                }
+                        res.json({success: false, message: '\'User already exists with this username or email\''})
+                    }else{
+
+                        res.json({success:true, message:'User created!'})
+                    }
+                });
             });
+
+
         }
      });
     //Gets all the information on the current user logged in
