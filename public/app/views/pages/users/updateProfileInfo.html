@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/updateProfileInfo" ng-click="main.getUserInfo(main.userId);">
+                        <a class="nav-link" href="/preUpdateProfileInfo" ng-click="main.getUserInfo(main.userId);">
                             <span data-feather="bar-chart-2"></span>
                             Change Profile Info
                         </a>
@@ -56,16 +56,9 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h3>Add the finishing touches to your profile</h3>
                 <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>
+
                 </div>
             </div>
             <style>
@@ -78,7 +71,7 @@
                     <div class="container">
                         <form ng-submit="user.updateProfile();">
                             <div class="form-group" align="center">
-                                <h3>Update your profile here!</h3>
+
                                 <input type="text"
                                        class="form-control"
                                        ng-model="formData.username"

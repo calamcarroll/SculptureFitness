@@ -59,7 +59,7 @@
             </ul>
             <!--Right side of NavBar-->
             <ul class="nav navbar-nav justify-content-between ml-auto">
-                <li class="navbar-text"><a href="/profile"><span class="fa fa-user"></span> {{main.username}}</a></li>
+                <li class="navbar-text"><a href="/profile" ng-show="main.isLoggedIn"><span class="fa fa-user"></span> {{main.username}}</a></li>
 
                 <li class="dropdown">
                     <button type="submit"  class="btn btn-outline-secondary dropdown-toggle" ng-click="main.logout();" ng-show="main.isLoggedIn" ><i class="fa fa-sign-out"></i>Log out</button>
