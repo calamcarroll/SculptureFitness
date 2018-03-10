@@ -15,6 +15,11 @@ app.service('userUpdateService', function(){
 app.config(function($routeProvider,$locationProvider){
 
     $routeProvider
+
+        .when('/gymMarketplace',{
+            templateUrl: 'app/views/pages/trainers/gymMarketplace.html'
+        })
+
         .when('/preUpdateProfileInfo',{
         templateUrl: 'app/views/pages/users/preUpdateProfileInfo.html'
     })

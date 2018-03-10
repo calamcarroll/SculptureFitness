@@ -1,27 +1,44 @@
 <!--ng-repeat="user in users |filter:search| pagination: curPage * pageSize | limitTo: pageSize"  put this in div class row to repeat a panel -->
 <style>
 
-    .card {
 
-    }
-    .img-thumbnail{
-
-    }
-    .card-title{
-        padding-left: 600px;
-    }
-    .card-text{
-        padding-left:450px;
-    }
 </style>
 <div class="card">
     <h3 class="card-header primary-color white-text">{{main.username}}</h3>
-    <div class="card-body">
-        <h4 class="card-title">Special title treatment</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <span><img src="images/gym.png" class="img-thumbnail" width="304" height="236"></span>
+<div class="card-body">
+    <!--<div class="col-sm">-->
+        <!--<h4 class="card-title">Special title treatment</h4>-->
+        <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.-->
+    <!--</div>-->
 
-        <!--<a class="btn btn-primary">Go somewhere</a>-->
+    <!--<div class="col-sm">-->
+        <!--<span><img src="images/gym.png" class="img-thumbnail" width="304" height="236"></span>-->
+    <!--</div>-->
+    <style>
+       #btn{
+           margin-top: 130px;
+       }
+
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-md-pull-9">
+                <span><img src="images/temp_profile_pic.jpg" class=".img-thumbnail" width="200" height="200"></span>
+            </div>
+            <div class="col-md-8 col-md-push-3">
+                <h6 class="h">Name: <strong>{{main.username}}</strong></h6>
+                <h6>Bio: </h6>
+                <h6>Qualification: Sports and Health Science Waterford IT </h6>
+                <h6>Previous Clients: </h6>
+                <h6>Experience: 5+ years</h6>
+                <h6>Cost: €50 per month</h6>
+            </div>
+            <div class=".col-md-3 .col-md-offset-3">
+                <button class="btn btn-primary" id="btn">Enquire</button>
+            </div>
+        </div>
     </div>
+</div>
 </div>
 
