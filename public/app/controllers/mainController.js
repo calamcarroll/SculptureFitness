@@ -11,6 +11,7 @@ angular.module('mainController', ['authServices'])
                     app.email = data.data.email;
                     app.userId = data.data.userId;
                     app.isPersonalTrainer = data.data.isPersonalTrainer;
+                    app.isAdmin = data.data.isAdmin;
                     app.isLoggedIn = true;
                 });
             } else {

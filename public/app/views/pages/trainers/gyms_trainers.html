@@ -6,8 +6,45 @@
     }
     #sideNav{
         width:200px;
+    }
+    .img {
+        border-radius: 8px;
+    }
+    .img:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 
+    }
 
+    .col-sm-6 {
+        position: relative;
+
+    }
+
+    .img {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%)
+    }
+
+    .col-sm-6:hover .img {
+        opacity: 0.3;
+    }
+
+    .col-sm-6:hover .middle {
+        opacity: 1;
     }
 
 </style>
@@ -19,7 +56,6 @@
         </li>
     </ul>
 </nav>
-
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="innerNav" >
@@ -36,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-item" ng-show="main.isAdmin">
-                        <a class="nav-link" href="/gyms_trainers">
+                        <a class="nav-link" href="#">
                             <span class="fa fa-address-card"></span>
                             Gyms & Trainers
                         </a>
@@ -73,52 +109,30 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">User Statistics</h1>
-
+                <h1 class="h2">Gyms|Personal Trainers</h1>
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="/gyms">
+                            <img src="images/gymUpdate.png" class="img" style="height: 350px;" >
+                            <div class="middle">
+                                <div class="text">Gym Updates</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Personal Trainer</th>
-                        <th>Admin</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{main.username}}</td>
-                        <td>{{main.isPersonalTrainer}}</td>
-                        <td>{{main.isAdmin}}</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-
-            <h2>Track my Progress</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>Date of Entry</th>
-                        <th>Weight</th>
-                        <th>Height</th>
-                        <th>Body Fat</th>
-                        <th>Workouts completed so far</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>06/03/2018</td>
-                        <td>105kg</td>
-                        <td>207cm</td>
-                        <td>19%</td>
-                        <td></td>
-                    </tr>
-
-                    </tbody>
-                </table>
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <a href="#">
+                            <img src="images/pt_update.png" class="img" style="height: 350px;">
+                            <div class="middle">
+                                <div class="text">Personal Trainer Updates</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

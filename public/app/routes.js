@@ -15,14 +15,22 @@ app.service('userUpdateService', function(){
 app.config(function($routeProvider,$locationProvider){
 
     $routeProvider
-
         .when('/gymMarketplace',{
-            templateUrl: 'app/views/pages/trainers/gymMarketplace.html'
+            templateUrl: 'app/views/pages/trainers/gymMarketplace.html',
+            controller:'gymCtrl',
+            controllerAs: 'gym'
         })
-
+        .when('/gyms_trainers',{
+            templateUrl: 'app/views/pages/trainers/gyms_trainers.html'
+        })
+        .when('/gyms',{
+            templateUrl: 'app/views/pages/trainers/gyms.html',
+            controller:'gymCtrl',
+            controllerAs: 'gym'
+        })
         .when('/preUpdateProfileInfo',{
         templateUrl: 'app/views/pages/users/preUpdateProfileInfo.html'
-    })
+        })
         .when('/trainerMarketplace',{
             templateUrl: 'app/views/pages/trainers/trainerMarketplace.html'
         })
@@ -52,13 +60,11 @@ app.config(function($routeProvider,$locationProvider){
         .when('/profile',{
             templateUrl:'app/views/pages/users/profile.html'
         })
-
         .when('/facebook/:token', {
             templateUrl: 'app/views/pages/users/profile.html',
             controller: 'facebookCtrl',
             controllerAs: 'facebook'
         })
-
         .when('/facebookerror',{
             templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'facebookCtrl',
@@ -72,30 +78,25 @@ app.config(function($routeProvider,$locationProvider){
             controllerAs: 'twitter',
             authenticated: false
         })
-
         .when('/twittererror',{
             templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'twitterCtrl',
             controllerAs: 'twitter',
             authenticated: false
         })
-
         .when('/google/:token',{
             templateUrl: 'app/views/pages/users/profile.html',
             controller: 'twitterCtrl',
             controllerAs: 'twitter',
             authenticated: false
         })
-
         .when('/googleerror',{
             templateUrl: 'app/views/pages/users/clientLogin.html',
             controller: 'googleCtrl',
             controllerAs: 'google',
             authenticated: false
         })
-
         .otherwise({redirectTo: '/'});
-
 
     $locationProvider.html5Mode({
         enabled: true,

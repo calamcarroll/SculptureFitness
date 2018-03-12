@@ -1,44 +1,29 @@
-<!--ng-repeat="user in users |filter:search| pagination: curPage * pageSize | limitTo: pageSize"  put this in div class row to repeat a panel -->
 <style>
-
-
+    #btn{
+        margin-top: 130px;
+    }
 </style>
-<div class="card">
-    <h3 class="card-header primary-color white-text">{{main.username}}</h3>
+<div class="card"  ng-repeat="gym in gymList">
     <div class="card-body">
-        <!--<div class="col-sm">-->
-        <!--<h4 class="card-title">Special title treatment</h4>-->
-        <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.-->
-        <!--</div>-->
-
-        <!--<div class="col-sm">-->
-        <!--<span><img src="images/gym.png" class="img-thumbnail" width="304" height="236"></span>-->
-        <!--</div>-->
-        <style>
-            #btn{
-                margin-top: 130px;
-            }
-
-        </style>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 col-md-pull-9">
-                    <span><img src="images/temp_profile_pic.jpg" class=".img-thumbnail" width="200" height="200"></span>
+                    <span><img src="{{image}}" class=".img-thumbnail" width="200" height="200"></span>
                 </div>
-                <div class="col-md-8 col-md-push-3">
-                    <h6 class="h">Name: <strong>{{main.username}}</strong></h6>
-                    <h6>Monthly Price: </h6>
-                    <h6>3 Month Price:</h6>
-                    <h6>Yearly Price:</h6>
-                    <h6>Email</h6>
-                    <h6>Website</h6>
+                <div class="col-md-8 col-md-push-3" >
+                    <h3></h3>
+                    <h6>Name: <strong>{{gym.name}}</strong></h6>
+                    <h6>Monthly Price: <strong>€{{gym.monthlyPrice}}</strong></h6>
+                    <h6>3 Months: <strong>€{{gym.threeMonthPrice}}</strong></h6>
+                    <h6>Yearly Price: <strong>€{{gym.yearPrice}}</strong></h6>
+                    <h6>Email: <strong>{{gym.email}} </strong></h6>
+                    <h6>Website: <a href="{{gym.website}}"> link here</a></h6>
                 </div>
                 <div class=".col-md-3 .col-md-offset-3">
-                    <button class="btn btn-primary" id="btn">Enquire</button>
+                    <button class="btn btn-info" id="btn"><span class="fa fa-info-circle"></span></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<br>

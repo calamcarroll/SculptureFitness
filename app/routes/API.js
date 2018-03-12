@@ -23,7 +23,6 @@ module.exports = function(router){
                 res.json("Gym has been added to the database");
             }
         })
-
     });
     //Route for retrieving all gyms in database
     router.get('/getGyms', function (req, res) {
@@ -106,7 +105,7 @@ module.exports = function(router){
 
     //user login routes
     router.post('/authenticate', function(req,res){
-        User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id').exec(function(err,user){
+        User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id isAdmin').exec(function(err,user){
             if(err) throw err;
                 if(!user){
                     res.json({success:false, message:'No such user found!'});
@@ -116,7 +115,7 @@ module.exports = function(router){
                         if (!validatePassword) {
                             res.json({success : false, message : 'Password incorrect'});
                         }else{
-                            var token = jwt.sign({username: user.username, email: user.email, isPersonalTrainer: user.isPersonalTrainer, userId: user._id}, secret, {expiresIn: '24h'});
+                            var token = jwt.sign({username: user.username, email: user.email, isPersonalTrainer: user.isPersonalTrainer, userId: user._id, isAdmin: user.isAdmin}, secret, {expiresIn: '24h'});
                             res.json({success : true, message : 'User logged in', token: token});
                         }
                     }else{
@@ -139,11 +138,10 @@ module.exports = function(router){
                        req.decoded = decoded;
                        next();
                    }
-               })
-           }else{
+               })}else{
                res.json({success:false, message:'token not found'})
            }
-         });
+    });
     /// Must be placed at the bottom so that the token can be assigned to the headers when it gets decrypted. If not it wont get assigned
     router.post('/currentUser', function(req, res){
         res.send(req.decoded);
