@@ -120,21 +120,20 @@
                     <th>1 Month</th>
                     <th>3 Month</th>
                     <th>12 Month</th>
-                    <th>Longitude</th>
-                    <th>Latitude</th>
                 </tr>
                 </thead>
                 <tbody ng-repeat="gym in gymList">
                 <tr>
-                    <th scope="row">1</th>
                     <td>{{gym.name}}</td>
                     <td>{{gym.website}}</td>
                     <td>{{gym.email}}</td>
-                    <td>{{gym.monthlyPrice}}</td>
-                    <td>{{gym.threeMonthPrice}}</td>
-                    <td>{{gym.yearPrice}}</td>
-                    <td>{{gym.location.longitude}}</td>
-                    <td>{{gym.location.latitude}}</td>
+                    <td>€{{gym.monthlyPrice}}</td>
+                    <td>€{{gym.threeMonthPrice}}</td>
+                    <td>€{{gym.yearPrice}}</td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-info">Update</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

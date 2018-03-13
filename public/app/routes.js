@@ -20,6 +20,10 @@ app.config(function($routeProvider,$locationProvider){
             controller:'gymCtrl',
             controllerAs: 'gym'
         })
+        .when('/findGym',{
+            templateUrl: 'app/views/pages/trainers/findGym.html'
+        })
+
         .when('/gyms_trainers',{
             templateUrl: 'app/views/pages/trainers/gyms_trainers.html'
         })

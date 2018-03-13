@@ -34,6 +34,15 @@ module.exports = function(router){
           }
        });
     });
+    router.get('/getGymsCoords', function (req, res) {
+        Gym.find(function(err, gym){
+            if(err){
+                res.send("There has been an error with this gym request: " +gym);
+            } else{
+                res.json(gym);
+            }
+        });
+    });
     router.put('/updateProfileInfo/:id', function(req,res){
         User.findById(req.params.id,function (err, user) {
             if(err){

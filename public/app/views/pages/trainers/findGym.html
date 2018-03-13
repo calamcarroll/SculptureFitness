@@ -1,0 +1,19 @@
+<style>
+    #map {
+        height: 400px;
+        margin: 20px 0;
+        border-radius: 5px;
+        border: 1px solid silver;
+    }
+</style>
+<div class="container" ng-controller="mapsController as Maps">
+
+
+    <div id="map"></div>
+    <div id="repeat" ng-repeat="marker in markers | orderBy : 'title'">
+        <a id="country_container" href="#" ng-click="openInfoWindow($event, marker)">
+            <!--<label id="names" >{{marker.title}}</label></a>-->
+    </div>
+
+
+</div>
