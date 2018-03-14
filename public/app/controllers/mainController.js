@@ -59,6 +59,19 @@ angular.module('mainController', ['authServices'])
                }
             });
         };
+        this.updateProfilePassword = function(){
+            var id = userUpdateService.userId;
+            Auth.updateProfilePassword(id,$scope.formData).then(function(data){
+                if(!data){
+                    console.log("There has been an error with this update")
+                }else{
+                    $timeout(function () {
+                        $location.path('/profile');
+                        window.location.reload();
+                    },2000);
+                }
+            });
+        };
 
 
 

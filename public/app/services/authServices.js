@@ -30,6 +30,11 @@ angular.module('authServices', [])
             return users
         })
     };
+    authFactory.updateProfilePassword = function (id, formData) {
+        return $http.put('api/updateProfilePassword/' + id, formData).then(function(users){
+            return users
+        })
+    };
 
 
 

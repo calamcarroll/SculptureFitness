@@ -5,6 +5,7 @@ angular.module('userController', ['userServices'])
             app.error = false;
             User.create(app.regData).then(function(data) {
                 if (data.data.success){
+
                     app.Success = data.data.message + ' Redirecting.';
                     $timeout(function() {
                         $location.path('/home');

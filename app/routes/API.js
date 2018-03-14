@@ -34,29 +34,38 @@ module.exports = function(router){
           }
        });
     });
-    router.get('/getGymsCoords', function (req, res) {
-        Gym.find(function(err, gym){
+    router.put('/updateProfilePassword/:id', function(req,res){
+        User.findById(req.params.id,function (err, user) {
             if(err){
-                res.send("There has been an error with this gym request: " +gym);
-            } else{
-                res.json(gym);
+                res.send('There has been as error: ' + err )
+            }else{
+                user.password = req.body.password;
+                bcrypt.hash(user.password, null, null, function(err,hash){
+                    if(err)return next(err);
+                    user.password = hash;
+                user.save(function (err) {
+                    if(err){
+                        res.send("Password update failed: " + err);
+                    }else{
+                        res.send("User password been successfully updated");
+                      }
+                   });
+                });
             }
-        });
+        })
     });
+
+    //TODO YOU HAVE TO MAKE A ROUTE FOR UPDATING YOUR PASSWORD.
     router.put('/updateProfileInfo/:id', function(req,res){
         User.findById(req.params.id,function (err, user) {
             if(err){
                 res.send('There has been as error: ' + err )
             }else{
                 user.username = req.body.username;
-                user.password = req.body.password;
                 user.email = req.body.email;
                 user.weight = req.body.weight;
                 user.height = req.body.height;
                 user.bodyFat = req.body.bodyFat;
-                bcrypt.hash(user.password, null, null, function(err,hash) {
-                    if (err) return next(err);
-                    user.password = hash;
                     user.save(function (err) {
                         if(err){
                             res.send("User could not be saved: " + err);
@@ -64,7 +73,7 @@ module.exports = function(router){
                             res.send("User has been successfully updated");
                         }
                     })
-                });
+
             }
         })
     });

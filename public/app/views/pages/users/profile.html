@@ -9,8 +9,14 @@
 
 
     }
+    body{
+        background-image: url("https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb");
+    }
 
 </style>
+<div class="jumbotron">
+
+
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" >
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}'s Profile</a>
 
@@ -25,13 +31,16 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="innerNav" >
             <div class="sidebar-sticky" id="sideNav">
                 <ul class="nav flex-column" >
+
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="/profile">
+                            <span class="fa fa-home"></span>
                             Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
+                            <span class="fa fa-tasks"></span>
                             My Programs
                         </a>
                     </li>
@@ -42,14 +51,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Track my Progress
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/preUpdateProfileInfo" >
                             <span class="fa fa-edit"></span>
-                            Update Profile Info
+                            Update Profile
 
                         </a>
                     </li>
@@ -63,9 +67,12 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="#">
+                            <span class="fa fa-heartbeat"></span>
                             Diets and More
                         </a>
                     </li>
+
+
                 </ul>
 
 
@@ -125,5 +132,6 @@
     </div>
 </div>
 
-
+</div>
 </body>
+
