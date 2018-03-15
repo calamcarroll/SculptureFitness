@@ -23,6 +23,9 @@ app.config(function($routeProvider,$locationProvider){
         .when('/findGym',{
             templateUrl: 'app/views/pages/trainers/findGym.html'
         })
+        .when('/trainerSection',{
+            templateUrl: 'app/views/pages/trainers/trainerSection.html'
+        })
 
         .when('/gyms_trainers',{
             templateUrl: 'app/views/pages/trainers/gyms_trainers.html'

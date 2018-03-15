@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="thumbnail">
+                <a href="/trainerMarketplace">
+                    <img src="http://icons.iconarchive.com/icons/ebiene/e-commerce/256/checklist-icon.png" class="img" style="height: 320px; width: 320px;" >
+                    <div class="middle">
+                        <h4>Program's</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Programs to make<span class="badge">12</span></li>
+                            <li class="list-group-item">Client sessions <span class="badge">5</span></li>
+                            <li class="list-group-item">Update Requests <span class="badge">3</span></li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col order-12">
+            <div class="thumbnail">
+                <a href="/trainerMarketplace">
+                    <img src="http://icons.iconarchive.com/icons/xaml-icon-studio/agriculture/256/Fruits-Vegetables-icon.png" class="img" style="height: 320px; width: 320px;" >
+                    <div class="middle">
+                        <h4>Diets</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Diets Pending<span class="badge">12</span></li>
+                            <li class="list-group-item">View Diets <span class="badge">5</span></li>
+                            <li class="list-group-item">Client Request <span class="badge">3</span></li>
+                        </ul>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col order-1" >
+            <div class="thumbnail">
+                <a href="/trainerMarketplace">
+                    <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/people-icon.png" class="img" style="height: 320px; width: 320px;" >
+                    <div class="middle">
+                        <h4>Clients</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Session Review<span class="badge">12</span></li>
+                            <li class="list-group-item">Training Requests <span class="badge">5</span></li>
+                            <li class="list-group-item">My Clients <span class="badge">3</span></li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .img {
+        border-radius: 8px;
+    }
+    .img:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+
+    }
+
+    .col-sm-6 {
+        position: relative;
+
+    }
+
+    .img {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%)
+    }
+
+    .thumbnail:hover .img {
+        opacity: 0.3;
+    }
+
+    .thumbnail:hover .middle {
+        opacity: 1;
+    }
+
+
+    .text {
+        background-color: rgba(238, 238, 252, 0.18);
+        color: #295ae1;
+        font-size: 16px;
+
+    }
+
+
+</style>
