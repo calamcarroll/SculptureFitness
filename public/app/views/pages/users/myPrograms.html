@@ -1,0 +1,285 @@
+<body>
+<style>
+    #innerNav{
+        width: 200px;
+        background-color: #db3236;
+    }
+    #sideNav{
+        width:200px;
+
+
+    }
+    body{
+        background-image: url("https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb");
+    }
+
+
+</style>
+<div class="jumbotron">
+
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" >
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}'s Profile</a>
+
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="innerNav" >
+                <div class="sidebar-sticky" id="sideNav">
+                    <ul class="nav flex-column" >
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/profile">
+                                <span class="fa fa-home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/findMyPrograms">
+                                <span class="fa fa-tasks"></span>
+                                My Programs
+                            </a>
+                        </li>
+                        <li class="nav-item" ng-show="main.isAdmin">
+                            <a class="nav-link" href="/gyms_trainers">
+                                <span class="fa fa-address-card"></span>
+                                Gyms & Trainers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/preUpdateProfileInfo" >
+                                <span class="fa fa-edit"></span>
+                                Update Profile
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/findGym">
+                                <span class="fa fa-map-marker"></span>
+                                Find Gyms
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="fa fa-heartbeat"></span>
+                                Diets and More
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+                    <ul class="nav nav-pills">
+                        <button><li class="active"><a data-toggle="tab" href="#home">Day 1</a></li></button>
+                        <button><li><a data-toggle="tab"  href="#menu1">Day 2 <span class="fa fa-edit"></span></a></li></button>
+                        <button><li><a data-toggle="tab" href="#menu2">Day 3  <span class="fa fa-sun"></span></a></li></button>
+                        <button><li><a data-toggle="tab" href="#menu3">Day 4  <span class="fa fa-sun"></span></a></li></button>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <table class="table table-hover" ng-repeat="program in programs">
+                                <thead class="blue-grey lighten-4">
+                                <th>Muscle Group</th>
+                                <th>Exercise</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                                <th>RestTime</th>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>{{program.day1.muscleGroup1}}</td>
+                                    <td>{{program.day1.exercise1}}</td>
+                                    <td>{{program.day1.sets1}}</td>
+                                    <td>{{program.day1.reps1}}</td>
+                                    <td>{{program.day1.restTime1}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day1.muscleGroup2}}</td>
+                                    <td>{{program.day1.exercise2}}</td>
+                                    <td>{{program.day1.sets2}}</td>
+                                    <td>{{program.day1.reps2}}</td>
+                                    <td>{{program.day1.restTime2}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day1.muscleGroup3}}</td>
+                                    <td>{{program.day1.exercise3}}</td>
+                                    <td>{{program.day1.sets3}}</td>
+                                    <td>{{program.day1.reps3}}</td>
+                                    <td>{{program.day1.restTime3}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day1.muscleGroup4}}</td>
+                                    <td>{{program.day1.exercise4}}</td>
+                                    <td>{{program.day1.sets4}}</td>
+                                    <td>{{program.day1.reps4}}</td>
+                                    <td>{{program.day1.restTime4}}'s</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div id="menu1" class="tab-pane fade">
+
+                            <table class="table table-hover" ng-repeat="program in programs">
+                                <thead class="blue-grey lighten-4">
+                                <th>Muscle Group</th>
+                                <th>Exercise</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                                <th>RestTime</th>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>{{program.day2.muscleGroup1}}</td>
+                                    <td>{{program.day2.exercise1}}</td>
+                                    <td>{{program.day2.sets1}}</td>
+                                    <td>{{program.day2.reps1}}</td>
+                                    <td>{{program.day2.restTime1}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day2.muscleGroup2}}</td>
+                                    <td>{{program.day2.exercise2}}</td>
+                                    <td>{{program.day2.sets2}}</td>
+                                    <td>{{program.day2.reps2}}</td>
+                                    <td>{{program.day2.restTime2}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day2.muscleGroup3}}</td>
+                                    <td>{{program.day2.exercise3}}</td>
+                                    <td>{{program.day2.sets3}}</td>
+                                    <td>{{program.day2.reps3}}</td>
+                                    <td>{{program.day2.restTime3}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day2.muscleGroup4}}</td>
+                                    <td>{{program.day2.exercise4}}</td>
+                                    <td>{{program.day2.sets4}}</td>
+                                    <td>{{program.day2.reps4}}</td>
+                                    <td>{{program.day2.restTime4}}'s</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+
+                            <table class="table table-hover" ng-repeat="program in programs">
+                                <thead class="blue-grey lighten-4">
+                                <th>Muscle Group</th>
+                                <th>Exercise</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                                <th>RestTime</th>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>{{program.day3.muscleGroup1}}</td>
+                                    <td>{{program.day3.exercise1}}</td>
+                                    <td>{{program.day3.sets1}}</td>
+                                    <td>{{program.day3.reps1}}</td>
+                                    <td>{{program.day3.restTime1}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day3.muscleGroup2}}</td>
+                                    <td>{{program.day3.exercise2}}</td>
+                                    <td>{{program.day3.sets2}}</td>
+                                    <td>{{program.day3.reps2}}</td>
+                                    <td>{{program.day3.restTime2}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day3.muscleGroup3}}</td>
+                                    <td>{{program.day3.exercise3}}</td>
+                                    <td>{{program.day3.sets3}}</td>
+                                    <td>{{program.day3.reps3}}</td>
+                                    <td>{{program.day3.restTime3}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day3.muscleGroup4}}</td>
+                                    <td>{{program.day3.exercise4}}</td>
+                                    <td>{{program.day3.sets4}}</td>
+                                    <td>{{program.day3.reps4}}</td>
+                                    <td>{{program.day3.restTime4}}'s</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <table class="table table-hover" ng-repeat="program in programs">
+                                <thead class="blue-grey lighten-4">
+                                <th>Muscle Group</th>
+                                <th>Exercise</th>
+                                <th>Sets</th>
+                                <th>Reps</th>
+                                <th>RestTime</th>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>{{program.day4.muscleGroup1}}</td>
+                                    <td>{{program.day4.exercise1}}</td>
+                                    <td>{{program.day4.sets1}}</td>
+                                    <td>{{program.day4.reps1}}</td>
+                                    <td>{{program.day4.restTime1}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day4.muscleGroup2}}</td>
+                                    <td>{{program.day4.exercise2}}</td>
+                                    <td>{{program.day4.sets2}}</td>
+                                    <td>{{program.day4.reps2}}</td>
+                                    <td>{{program.day4.restTime2}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day4.muscleGroup3}}</td>
+                                    <td>{{program.day4.exercise3}}</td>
+                                    <td>{{program.day4.sets3}}</td>
+                                    <td>{{program.day4.reps3}}</td>
+                                    <td>{{program.day4.restTime3}}'s</td>
+                                </tr>
+                                <tr>
+                                    <td>{{program.day4.muscleGroup4}}</td>
+                                    <td>{{program.day4.exercise4}}</td>
+                                    <td>{{program.day4.sets4}}</td>
+                                    <td>{{program.day4.reps4}}</td>
+                                    <td>{{program.day4.restTime4}}'s</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+
+
+
+            </main>
+        </div>
+    </div>
+
+</div>
+</body>
+

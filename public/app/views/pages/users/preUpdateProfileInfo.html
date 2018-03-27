@@ -137,7 +137,7 @@
 
                 <div class="col-sm-6">
                     <div class="thumbnail">
-                        <a data-toggle="modal" data-target="#myModal"  ng-click="main.getUserInfo(main.userId);">
+                        <a data-toggle="modal" data-target="#myModal" ng-click="main.getUserInfo(main.userId);">
                             <img src="images/password_change.png" class="img">
                             <div class="middle">
                                 <div class="text">Update Password</div>
@@ -162,14 +162,24 @@
                                     <div class="container">
                                         <form ng-submit="user.updateProfilePassword();">
 
-                                            <div class="form-group" align="center">
+                                            <div class="form-group" align="center" >
                                                 <input type="password"
+                                                       style="width: 50px"
                                                        class="form-control"
                                                        ng-model="formData.password"
                                                        placeholder="New Password"
                                                        ng-style="{'width': 350 + 'px'}"
                                                        required="true">
                                             </div>
+                                            <!--<div class="form-group">-->
+                                                    <!--<div class="form-group col-sm-6">-->
+                                                        <!--<input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="New Password" required style="width: 200px; margin-left: 135px">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="form-group">-->
+                                                        <!--<input type="password" class="form-control" id="inputPasswordConfirm" ng-model="formData.password" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="Confirm Password" required style="width: 200px; margin-left: 150px">-->
+                                                        <!--<div class="help-block with-errors"></div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
                                             <button type="submit" id="btn"class="btn btn-info">Update Password <span class="fa fa-edit"></span></button>
                                             <style>
                                                 #btn{

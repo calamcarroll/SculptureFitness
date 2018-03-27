@@ -26,6 +26,16 @@ app.config(function($routeProvider,$locationProvider){
         .when('/trainerSection',{
             templateUrl: 'app/views/pages/trainers/trainerSection.html'
         })
+        .when('/findMyPrograms',{
+            templateUrl: 'app/views/pages/users/findMyPrograms.html',
+            controller:'programsCtrl',
+            controllerAs: 'programCtrl'
+        })
+        .when('/myPrograms',{
+            templateUrl: 'app/views/pages/users/myPrograms.html',
+            controller:'programsCtrl',
+            controllerAs: 'programCtrl'
+        })
 
         .when('/gyms_trainers',{
             templateUrl: 'app/views/pages/trainers/gyms_trainers.html'
