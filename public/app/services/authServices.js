@@ -20,6 +20,11 @@ angular.module('authServices', [])
     authFactory.facebook = function(token) {
         AuthToken.setToken(token);
     };
+    authFactory.getPersonalTrainers = function(){
+      return $http.get('api/getPersonalTrainers').then(function(users){
+          return users;
+      })
+    };
     authFactory.getUserInfo = function(id){
         return $http.get('api/getUserInfo/' + id).then(function(users){
             return users

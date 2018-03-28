@@ -1,44 +1,27 @@
-<!--ng-repeat="user in users |filter:search| pagination: curPage * pageSize | limitTo: pageSize"  put this in div class row to repeat a panel -->
 <style>
-
-
+    #btn{
+        margin-top: 130px;
+    }
+    body{
+        background-image: url("https://pre00.deviantart.net/c334/th/pre/f/2011/243/2/0/abstract_stock_background_14_by_i3ehnam-d48ex61.jpg");
+    }
 </style>
-<div class="card">
-    <h3 class="card-header primary-color white-text">{{main.username}}</h3>
-<div class="card-body">
-    <!--<div class="col-sm">-->
-        <!--<h4 class="card-title">Special title treatment</h4>-->
-        <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.-->
-    <!--</div>-->
-
-    <!--<div class="col-sm">-->
-        <!--<span><img src="images/gym.png" class="img-thumbnail" width="304" height="236"></span>-->
-    <!--</div>-->
-    <style>
-       #btn{
-           margin-top: 130px;
-       }
-
-    </style>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-md-pull-9">
-                <span><img src="images/temp_profile_pic.jpg" class=".img-thumbnail" width="200" height="200"></span>
-            </div>
-            <div class="col-md-8 col-md-push-3">
-                <h6 class="h">Name: <strong>{{main.username}}</strong></h6>
-                <h6>Bio: </h6>
-                <h6>Qualification: Sports and Health Science Waterford IT </h6>
-                <h6>Previous Clients: </h6>
-                <h6>Experience: 5+ years</h6>
-                <h6>Cost: €50 per month</h6>
-            </div>
-            <div class=".col-md-3 .col-md-offset-3">
-                <button class="btn btn-primary" id="btn">Enquire</button>
+<div class="card" ng-repeat="users in trainerList">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-pull-9">
+                    <span><img src="{{gym.profileImg}}" class=".img-thumbnail" width="150" height="150"></span>
+                </div>
+                <div class="col-md-8 col-md-push-3" >
+                    <h6>Username: <strong>{{users.username}}</strong></h6>
+                    <h6>Email: <strong>{{users.email}}</strong></h6>
+                </div>
+                <div class=".col-md-3 .col-md-offset-3">
+                    <button class="btn btn-info" id="btn"><span class="fa fa-info-circle"></span> View Profile</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-
+<br>

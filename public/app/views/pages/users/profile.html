@@ -51,9 +51,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/preUpdateProfileInfo" >
+                        <a class="nav-link" href="/preUpdateProfileInfo" ng-show="!main.isPersonalTrainer" >
                             <span class="fa fa-edit"></span>
                             Update Profile
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/updatePtInfo" ng-show="main.isPersonalTrainer" >
+                            <span class="fa fa-edit"></span>
+                            Update PT info
 
                         </a>
                     </li>

@@ -5,6 +5,16 @@ var jwt                    = require('jsonwebtoken');
 var secret                 = 'mySecret';
 var bcrypt                 = require('bcrypt-nodejs');
 module.exports = function(router){
+    //Route for showing all personal trainers
+    router.get('/getPersonalTrainers', function(req,res){
+       User.find({"isPersonalTrainer": true}, function(err,user){
+           if(err){
+               res.send(err);
+           }else{
+               res.json(user);
+           }
+       })
+    });
     //Route for adding programs
     router.post('/programs', function (req,res) {
         var program = new Program();
@@ -122,13 +132,7 @@ module.exports = function(router){
             }
         })
     });
-
-
-
-    //TODO MAKE A ROUTE FOR JUST THE ONE PROGRAM BY THE USER ID IT WAS CREATED FOR
-    //TODO ADD AN UPDATE FUNCTION ROUTE THAT JUST UPDATES CERTAIN DAYS
-    //Route for retrieving all programs
-
+    //Route for getting programs only created
     router.get('/getPrograms/:createdFor', function(req,res){
         Program.find({"createdFor":req.params.createdFor},function (err, program) {
             if(err){
@@ -148,7 +152,6 @@ module.exports = function(router){
             }
         })
     });
-
     //route for updating a program by day
     router.put('/updateProgram/:id', function(req,res){
         Program.findById(req.params.id,function (err, program) {
@@ -194,7 +197,6 @@ module.exports = function(router){
             }
         })
     });
-
     //Route for adding a new gym
     router.post('/gym', function(req,res){
         var gym = new Gym();
@@ -224,7 +226,7 @@ module.exports = function(router){
           }
        });
     });
-
+    //Route for updating a users password
     router.put('/updateProfilePassword/:id', function(req,res){
         User.findById(req.params.id,function (err, user) {
             if(err){
@@ -245,8 +247,7 @@ module.exports = function(router){
             }
         })
     });
-
-    //TODO YOU HAVE TO MAKE A ROUTE FOR UPDATING YOUR PASSWORD.
+    //Route for updating a users profile info
     router.put('/updateProfileInfo/:id', function(req,res){
         User.findById(req.params.id,function (err, user) {
             if(err){
@@ -269,7 +270,6 @@ module.exports = function(router){
             }
         })
     });
-
     //User registration route
     router.post('/users', function (req, res) {
         var user = new User();
@@ -312,7 +312,6 @@ module.exports = function(router){
             }
         })
     });
-
     //user login routes
     router.post('/authenticate', function(req,res){
         User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id isAdmin').exec(function(err,user){
@@ -337,9 +336,7 @@ module.exports = function(router){
                   }
                })
              });
-
-
-
+    //Middleware used for decrypting token
     router.use(function(req,res,next){
        var token = req.body.token||req.body.query||req.headers['x-access-token'];
            if(token){

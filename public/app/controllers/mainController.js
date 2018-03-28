@@ -22,6 +22,12 @@ angular.module('mainController', ['authServices'])
             if ($location.hash() === '_=_') $location.hash(null);
         });
 
+
+             Auth.getPersonalTrainers().then(function (data){
+                 $scope.trainerList = data.data;
+            });
+
+
         this.getUserInfo = function(id){
                 Auth.getUserInfo(id).then(function(data){
 

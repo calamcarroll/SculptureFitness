@@ -49,7 +49,9 @@ app.config(function($routeProvider,$locationProvider){
         templateUrl: 'app/views/pages/users/preUpdateProfileInfo.html'
         })
         .when('/trainerMarketplace',{
-            templateUrl: 'app/views/pages/trainers/trainerMarketplace.html'
+            templateUrl: 'app/views/pages/trainers/trainerMarketplace.html',
+            controller:'mainController',
+            controllerAs: 'main'
         })
         .when('/',{
             templateUrl: 'app/views/pages/general/home.html'
@@ -65,6 +67,9 @@ app.config(function($routeProvider,$locationProvider){
         })
         .when('/updateProfileInfo',{
             templateUrl: 'app/views/pages/users/updateProfileInfo.html'
+        })
+        .when('/updatePtInfo',{
+            templateUrl: 'app/views/pages/trainers/updatePtInfo.html'
         })
         .when('/register',{
             templateUrl: 'app/views/pages/users/register.html',
