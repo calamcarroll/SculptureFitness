@@ -72,6 +72,9 @@ angular.module('mainController', ['authServices'])
                 }
             });
         };
+        this.clickMe = function () {
+          console.log("Click click!")
+        };
 
 
 

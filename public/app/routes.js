@@ -29,12 +29,12 @@ app.config(function($routeProvider,$locationProvider){
         .when('/findMyPrograms',{
             templateUrl: 'app/views/pages/users/findMyPrograms.html',
             controller:'programsCtrl',
-            controllerAs: 'programCtrl'
+            controllerAs: 'programsCtrl'
         })
         .when('/myPrograms',{
             templateUrl: 'app/views/pages/users/myPrograms.html',
-            controller:'programsCtrl',
-            controllerAs: 'programCtrl'
+            controller:'singleProgramsCtrl',
+            controllerAs: 'singleProgramsCtrl'
         })
 
         .when('/gyms_trainers',{

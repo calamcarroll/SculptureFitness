@@ -123,53 +123,14 @@ module.exports = function(router){
         })
     });
 
-    router.post('/programsAdd', function (req,res) {
-        var program = new Program();
-        program.name = req.body.name;
-        program.createdFor= req.body.createdFor;
-        program.createdBy = req.body.createdBy;
-        program.date = Date.now();
 
-        program.day1.muscleGroup = req.body.muscleGroup1;
-        program.day1.exercise = req.body.exercise1;
-        program.day1.sets = req.body.sets1;
-        program.day1.reps = req.body.reps1;
-        program.day1.restTime = req.body.restTime1;
-
-        program.day2.muscleGroup = req.body.muscleGroup2;
-        program.day2.exercise = req.body.exercise2;
-        program.day2.sets = req.body.sets2;
-        program.day2.reps = req.body.reps2;
-        program.day2.restTime = req.body.restTime2;
-
-        program.day3.muscleGroup = req.body.muscleGroup3;
-        program.day3.exercise = req.body.exercise3;
-        program.day3.sets = req.body.sets3;
-        program.day3.reps = req.body.reps3;
-        program.day3.restTime = req.body.restTime3;
-
-        program.day4.muscleGroup = req.body.muscleGroup4;
-        program.day4.exercise = req.body.exercise4;
-        program.day4.sets = req.body.sets4;
-        program.day4.reps = req.body.reps4;
-        program.day4.restTime = req.body.restTime4;
-
-
-        program.save(function(err){
-            if(err){
-                res.send(err)
-            }else{
-                res.json("Program has been created!");
-            }
-        })
-    });
 
     //TODO MAKE A ROUTE FOR JUST THE ONE PROGRAM BY THE USER ID IT WAS CREATED FOR
     //TODO ADD AN UPDATE FUNCTION ROUTE THAT JUST UPDATES CERTAIN DAYS
     //Route for retrieving all programs
 
-    router.get('/getPrograms', function(req,res){//TODO USE FINDONE() FUNTION TO FIND BY DATA.USE REQ.PARAMS.BODY THEN TO FIND IT
-        Program.find({"name": "calam", "createdFor": "55555"},function (err, program) {
+    router.get('/getPrograms/:createdFor', function(req,res){
+        Program.find({"createdFor":req.params.createdFor},function (err, program) {
             if(err){
                 res.send(err)
             }else{
@@ -177,6 +138,17 @@ module.exports = function(router){
             }
         })
     });
+    //Route for getting a program by name and id of createdBy
+    router.get('/getProgramsById/:id', function(req,res){
+        Program.find({ '_id' : req.params.id },function (err, program) {
+            if(err){
+                res.send(err)
+            }else{
+                res.json(program)
+            }
+        })
+    });
+
     //route for updating a program by day
     router.put('/updateProgram/:id', function(req,res){
         Program.findById(req.params.id,function (err, program) {

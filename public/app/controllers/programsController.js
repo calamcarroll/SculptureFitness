@@ -1,13 +1,26 @@
 angular.module('programsController', ['authServices'])
     .controller('programsCtrl', function(Auth,$http,$scope,$location){
-        var app = this;
-        $http.get('Api/getPrograms').then(function(programs){
-            $scope.programs = programs.data;
-            console.log(programs.data);
+        app = this;
+        app.choice = function(id) {
+            programId = id;
+            $location.path("myPrograms");
+        };
+
+        Auth.getUser().then(function(data){
+            $http.get('Api/getPrograms/'+ data.data.userId).then(function(programs){
+                $scope.prog = programs.data;
+                app.name = programs.data.name;
+                app.data = true;
+                if(programs.data.day5 = programs) {
+                    app.data5 = false;
+                }
+            });
         });
 
-        app.choice = function() {
-            console.log("button has been clicked");
-            $location.path("/myPrograms");
-        }
+    })
+.controller('singleProgramsCtrl', function(Auth,$http,$scope){
+    $http.get('Api/getProgramsById/'+ programId).then(function(programByName){
+        $scope.data = programByName.data;
+
     });
+});

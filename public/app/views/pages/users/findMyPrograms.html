@@ -101,17 +101,17 @@
 
                 </style>
                 <div class="container">
-                        <div class="card"ng-repeat="program in programs">
+                        <div class="card"ng-repeat="program in prog">
                         <div class="card-body">
                             <div class="container-fluid">
                                 <div class="row">
 
                                     <div class="col-md-8 col-md-push-3" >
-                                        <h6>Name: <strong>{{program.name}}</strong></h6>
-                                        <!--<h6>Date: <strong>{{program.date}}</strong></h6>-->
+                                        <h5><strong>{{program.name}}</strong></h5>
+                                        <h8>{{program.date| date : format : timezone}}</h8>
                                     </div>
                                     <div class=".col-md-2 .col-md-offset-3">
-                                        <button class="btn btn-success" ng-click="programCtrl.choice();" ><span class="fa fa-folder-open"></span>
+                                        <button class="btn btn-success" ng-click="programsCtrl.choice(program._id);" ><span class="fa fa-folder-open"></span>
                                         </button>
 
                                     </div>
