@@ -3,7 +3,7 @@
         margin-top: 130px;
     }
     body{
-        background-image: url("https://images.pexels.com/photos/28080/pexels-photo.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb");
+        background-image: url("http://www.hdwallpaperspulse.com/wp-content/uploads/2016/08/26/Awesome-Free-Backgrounds.jpg");
     }
 </style>
 <div class="card"  ng-repeat="gym in gymList">
@@ -22,7 +22,7 @@
                     <h6>Website: <a href="{{gym.website}}"> link here</a></h6>
                 </div>
                 <div class=".col-md-3 .col-md-offset-3">
-                    <button class="btn btn-info" id="btn"><span class="fa fa-info-circle"></span></button>
+                    <button class="btn btn-info" id="btn" ng-click="main.linkWithGym(gym.location.longitude, gym.location.latitude);"><span class="fa fa-info-circle"></span></button>
                 </div>
             </div>
         </div>

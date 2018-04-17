@@ -1,0 +1,61 @@
+<style>
+    body{
+        background-image: url("https://www.walldevil.com/wallpapers/a25/clean-background-highresolution.jpg");
+    }
+</style>
+<div class="jumbotron">
+    <h2 class="text-center">{{main.username}}'s Clients</h2>
+    <br>
+    <h5 class="text-center">Here are a list of all the clients you are linked with</h5>
+    <p class="text-center">A personal trainer can be linked with up to 4 clients</p>
+
+    <div class="row show-hide-message" ng-show="main.Success">
+        <div class="alert alert-success">{{main.Success}}</div>
+    </div>
+    <br>
+    <div class="row show-hide-message" ng-show="main.error">
+        <div class="alert alert-danger">{{main.error}}</div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm" >
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Body Fat</th>
+                <th>Weight</th>
+                <th>Unlink Client</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{main.client1_name}}</td>
+                <td>{{main.client1_bodyFat}}%</td>
+                <td>{{main.client1_weight}} kg</td>
+                <td><button class="btn btn-danger"ng-click="main.removeClient1(main.userId)"><span class="fa fa-unlink"></span></button></td>
+            </tr>
+            <tr>
+                <td>{{main.client2_name}}</td>
+                <td>{{main.client2_bodyFat}}%</td>
+                <td>{{main.client2_weight}} kg</td>
+                <td><button class="btn btn-danger"ng-click="main.removeClient2(main.userId)"><span class="fa fa-unlink"></span></button></td>
+            </tr>
+            <tr>
+                <td>{{main.client3_name}}</td>
+                <td>{{main.client3_bodyFat}}%</td>
+                <td>{{main.client3_weight}} kg</td>
+                <td><button class="btn btn-danger"ng-click="main.removeClient3(main.userId)"><span class="fa fa-unlink"></span></button></td>
+            </tr>
+            <tr>
+                <td>{{main.client4_name}}</td>
+                <td>{{main.client4_bodyFat}}%</td>
+                <td>{{main.client4_weight}} kg</td>
+                <td><button class="btn btn-danger"ng-click="main.removeClient3(main.userId)"><span class="fa fa-unlink"></span></button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

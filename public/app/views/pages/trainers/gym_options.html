@@ -1,0 +1,183 @@
+<body>
+<style>
+    .img {
+        border-radius: 8px;
+    }
+    .col-sm-4 {
+        position: relative;
+    }
+
+    .img {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%)
+    }
+
+    .col-sm-4:hover .img {
+        opacity: 0.3;
+    }
+
+    .col-sm-4:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: rgba(238, 238, 252, 0.18);
+        color: #295ae1;
+        font-size: 16px;
+
+    }
+
+    #innerNav{
+        width: 200px;
+        background-color: #db3236;
+    }
+    #sideNav{
+        width:200px;
+
+
+    }
+    body{
+        background-image: url("https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb");
+    }
+
+    input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid;
+        border-radius: 4px;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+        width: 66%;
+    }
+</style>
+<div class="jumbotron">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" >
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}'s Profile</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="innerNav" >
+                <div class="sidebar-sticky" id="sideNav">
+                    <ul class="nav flex-column" >
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/profile">
+                                <span class="fa fa-home"></span>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/findMyPrograms">
+                                <span class="fa fa-tasks"></span>
+                                My Programs
+                            </a>
+                        </li>
+                        <li class="nav-item" ng-show="main.isAdmin">
+                            <a class="nav-link" href="/gyms_trainers">
+                                <span class="fa fa-unlock-alt"></span>
+                                Admin Panel
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/preUpdateProfileInfo"  >
+                                <span class="fa fa-address-card"></span>
+                                Update Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/updatePtInfo" ng-show="main.isPersonalTrainer" >
+                                <span class="fa fa-edit"></span>
+                                Update PT info
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/findGym">
+                                <span class="fa fa-map-marker"></span>
+                                Find Gyms
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="fa fa-heartbeat"></span>
+                                Diets and More
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="text-center">Gym Section</h1>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="/createGym">
+                                <img src="http://weblogos.org/wp-content/uploads/2017/07/services-content-strategy.png" class="img" style="height: 250px; width: 250px;" >
+                                <div class="middle">
+                                    <div class="text">Create</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a href="/updateGyms">
+                                <img src="http://icons.iconarchive.com/icons/bokehlicia/pacifica/256/system-software-update-icon.png" class="img" style="height: 250px; width: 250px;">
+                                <div class="middle">
+                                    <div class="text">Update</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="thumbnail">
+                                <a href="/deleteGym">
+                                    <img src="https://cdn1.iconfinder.com/data/icons/round-ui/123/47-512.png" class="img" style="height: 250px; width: 250px;" >
+                                    <div class="middle">
+                                        <div class="text">Delete</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

@@ -16,22 +16,18 @@
 </style>
 <div class="jumbotron">
 
-
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" >
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}'s Profile</a>
-
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
             </li>
         </ul>
     </nav>
-
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="innerNav" >
                 <div class="sidebar-sticky" id="sideNav">
                     <ul class="nav flex-column" >
-
                         <li class="nav-item">
                             <a class="nav-link active" href="/profile">
                                 <span class="fa fa-home"></span>
@@ -46,39 +42,37 @@
                         </li>
                         <li class="nav-item" ng-show="main.isAdmin">
                             <a class="nav-link" href="/gyms_trainers">
-                                <span class="fa fa-address-card"></span>
-                                Gyms & Trainers
+                                <span class="fa fa-unlock-alt"></span>
+                                Admin Panel
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/preUpdateProfileInfo" >
-                                <span class="fa fa-edit"></span>
+                            <a class="nav-link" href="/preUpdateProfileInfo"  >
+                                <span class="fa fa-address-card"></span>
                                 Update Profile
-
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/updatePtInfo" ng-show="main.isPersonalTrainer" >
+                                <span class="fa fa-edit"></span>
+                                Update PT info
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/findGym">
                                 <span class="fa fa-map-marker"></span>
                                 Find Gyms
-
                             </a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span class="fa fa-heartbeat"></span>
                                 Diets and More
                             </a>
                         </li>
-
-
                     </ul>
-
-
                 </div>
             </nav>
-
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
 

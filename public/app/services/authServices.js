@@ -1,6 +1,6 @@
 angular.module('authServices', [])
 
-.factory('Auth', function($http, AuthToken){
+.factory('Auth', function($http, AuthToken, $q){
      var authFactory = {};
     var app = this;
 
@@ -8,6 +8,37 @@ angular.module('authServices', [])
         return $http.post('/api/authenticate', loginData).then(function(data){
               AuthToken.setToken(data.data.token);
               return data;
+        })
+    };
+    authFactory.deleteGym = function (id) {
+        return $http.delete('/api/deleteGym/' + id).then(function(data) {
+            return data;
+        });
+    };
+    authFactory.getSingleSession = function(id){
+        return $http.get('api/getSingleUserSessions/' +id).then(function(users) {
+            return users;
+        });
+    };
+    authFactory.removeClient1 = function(id){
+        return $http.put('/api/removeClient1/' + id).then(function(data){
+            return data;
+        })
+    };
+    authFactory.removeClient2 = function(id){
+        return $http.put('/api/removeClient2/' + id).then(function(data){
+            return data;
+        })
+    };
+    authFactory.removeClient3 = function(id){
+        return $http.put('/api/removeClient3/' + id).then(function(data){
+            return data;
+        })
+    };
+
+    authFactory.removeClient5 = function(id){
+        return $http.put('/api/removeClient5/' + id).then(function(data){
+            return data;
         })
     };
     authFactory.isLoggedIn = function(){
@@ -24,6 +55,36 @@ angular.module('authServices', [])
       return $http.get('api/getPersonalTrainers').then(function(users){
           return users;
       })
+    };
+    authFactory.getPersonalTrainerRequests = function(){
+        return $http.get('api/personalTrainerRequests').then(function(users){
+            return users;
+        })
+    };
+    authFactory.updatePtInfo = function(id, formData){
+      return $http.put('api/updatePT/' + id, formData).then(function(users){
+          return users;
+      })
+    };
+    authFactory.makeTrainer = function(id){
+        return $http.put('api/makeTrainer/' + id).then(function(users){
+            return users;
+        })
+    };
+    authFactory.linkWithPt = function(id,formData){
+        return $http.put('api/linkWithPt/' + id,formData).then(function(users){
+            return users;
+        })
+    };
+    authFactory.linkWithGym = function(id,formData){
+        return $http.put('api/linkWithGym/'+ id,formData).then(function(users){
+            return users;
+        })
+    };
+    authFactory.listSessionInfo =function(id){
+        return $http.get('api/getSessionInfo/' + id).then(function(users){
+            return users;
+        })
     };
     authFactory.getUserInfo = function(id){
         return $http.get('api/getUserInfo/' + id).then(function(users){

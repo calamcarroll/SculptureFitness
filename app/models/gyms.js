@@ -8,7 +8,7 @@ var gymSchema = new Schema({
     yearPrice: {type: Number, required: true},
     email: {type: String, required: true, lowercase: true, unique:true},
     website: {type: String, required: true},
-    profileImg: { data: Buffer, contentType: String },
+    profileImg: { type: String },
     location: {
         longitude: Number,
         latitude:  Number

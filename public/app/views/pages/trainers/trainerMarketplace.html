@@ -3,25 +3,38 @@
         margin-top: 130px;
     }
     body{
-        background-image: url("https://pre00.deviantart.net/c334/th/pre/f/2011/243/2/0/abstract_stock_background_14_by_i3ehnam-d48ex61.jpg");
+        background-image: url("https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg?auto=compress&cs=tinysrgb&h=350");
     }
 </style>
+<div class="row show-hide-message" ng-show="main.Success">
+    <div class="alert alert-success">{{main.Success}}</div>
+</div>
+<br>
+<div class="row show-hide-message" ng-show="main.error">
+    <div class="alert alert-danger">{{main.error}}</div>
+</div>
 <div class="card" ng-repeat="users in trainerList">
+
+    <h3></h3>
     <div class="card-body">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3 col-md-pull-9">
-                    <span><img src="{{gym.profileImg}}" class=".img-thumbnail" width="150" height="150"></span>
+                    <span><img src="{{users.profileImg|| 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'}}" class=".img-thumbnail" width="150" height="150"></span>
                 </div>
-                <div class="col-md-8 col-md-push-3" >
+                <div class="col-md-6 col-md-push-3" >
                     <h6>Username: <strong>{{users.username}}</strong></h6>
                     <h6>Email: <strong>{{users.email}}</strong></h6>
+                    <h6>Bio: <strong>{{users.bio}}</strong></h6>
+                    <h6>Studied: <strong>{{users.collegeAttended}}</strong></h6>
                 </div>
-                <div class=".col-md-3 .col-md-offset-3">
-                    <button class="btn btn-info" id="btn"><span class="fa fa-info-circle"></span> View Profile</button>
+                <div class=".col-md-1 .col-md-offset-1">
+                    <button class="btn btn-success" id="btn" ng-click="main.linkClient(users._id)"><span class="fa fa-info-circle"></span> Request</button>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
+
 <br>

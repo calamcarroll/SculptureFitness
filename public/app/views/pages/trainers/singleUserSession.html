@@ -1,0 +1,46 @@
+<style>
+    body{
+        background-image: url("https://www.walldevil.com/wallpapers/a25/clean-background-highresolution.jpg");
+    }
+</style>
+<div class="jumbotron">
+    <h2 class="text-center">Client Sessions</h2>
+    <br>
+    <h5 class="text-center">Here you will be able to find all client sessions </h5>
+    <p class="text-center">Sessions for all the clients you are linked to will be stored here</p>
+
+    <div class="row show-hide-message" ng-show="main.Success">
+        <div class="alert alert-success">{{main.Success}}</div>
+    </div>
+    <br>
+    <div class="row show-hide-message" ng-show="main.error">
+        <div class="alert alert-danger">{{main.error}}</div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm" ng-repeat="sessions in sessionList">
+
+            <thead>
+            <tr>
+                <th>Date of Session</th>
+                <th>Body Fat</th>
+                <th>Weight</th>
+                <th>Time of Session</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{sessions.date| date:format:timezone}}</td>
+                <td>{{sessions.bodyFat}}%</td>
+                <td>{{sessions.weight}} kg</td>
+                <td>{{sessions.date|date:" h:mma"}}</td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>

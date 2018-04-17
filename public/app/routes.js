@@ -15,6 +15,46 @@ app.service('userUpdateService', function(){
 app.config(function($routeProvider,$locationProvider){
 
     $routeProvider
+        .when('/PtRequests',{
+            templateUrl: 'app/views/pages/trainers/PtRequests.html',
+            controller:'mainController',
+            controllerAs: 'main'
+        })
+        .when('/clientSessions',{
+            templateUrl: 'app/views/pages/trainers/clientSessions.html'
+        })
+        .when('/createGym',{
+            templateUrl: 'app/views/pages/trainers/createGym.html',
+            controller: 'gymCtrl',
+            controllerAs: 'gym'
+        })
+        .when('/finalGymUpdate',{
+            templateUrl: 'app/views/pages/trainers/finalGymUpdate.html',
+            controller: 'gymCtrl',
+            controllerAs: 'gym'
+        })
+        .when('/deleteGym',{
+        templateUrl: 'app/views/pages/trainers/deleteGym.html',
+        controller: 'gymCtrl',
+        controllerAs: 'gym'
+        })
+        .when('/updateGyms',{
+            templateUrl: 'app/views/pages/trainers/updateGyms.html',
+            controller: 'gymCtrl',
+            controllerAs: 'gym'
+        })
+        .when('/gym_options',{
+            templateUrl: 'app/views/pages/trainers/gym_options.html'
+        })
+        .when('/singleUserSession',{
+            templateUrl: 'app/views/pages/trainers/singleUserSession.html'
+        })
+        .when('/sessions',{
+            templateUrl: 'app/views/pages/users/sessions.html'
+        })
+        .when('/myClients',{
+            templateUrl: 'app/views/pages/trainers/myClients.html'
+        })
         .when('/gymMarketplace',{
             templateUrl: 'app/views/pages/trainers/gymMarketplace.html',
             controller:'gymCtrl',

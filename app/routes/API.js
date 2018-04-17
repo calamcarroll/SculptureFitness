@@ -1,10 +1,162 @@
 var User                   = require('../models/user');
 var Gym                    = require('../models/gyms');
 var Program                = require('../models/programs');
+var Sessions                = require('../models/sessions');
 var jwt                    = require('jsonwebtoken');
 var secret                 = 'mySecret';
 var bcrypt                 = require('bcrypt-nodejs');
+var fs = require("fs");
+
+var readFileSync = require("fs").readFileSync;
 module.exports = function(router){
+    //Route for getting all client Info
+    router.get('/getClientInfo/:id', function (req,res) {
+       User.findById(req.params.id, function (err, data) {
+           if(data){
+               res.json(data)
+           }else{
+               res.json(err)
+           }
+       })
+    });
+    router.get('/getSingleGym/:id', function(req,res){
+       Gym.findById(req.params.id, function(err,data){
+           if(err){
+               res.send(err)
+           }else{
+               res.json(data);
+           }
+       })
+    });
+    router.put('/updateGym/:id', function(req,res){
+       Gym.findById(req.params.id, function(err,gym){
+           if(err){
+               res.send("There has been an error")
+           }else{
+               gym.name = req.body.name;
+               gym.email = req.body.email;
+               gym.webiste = req.body.website;
+               gym.profileImg = req.body.profileImg;
+               gym.yearPrice = req.body.yearPrice;
+               gym.threeMonthPrice = req.body.threeMonthPrice;
+               gym.monthlyPrice = req.body.monthlyPrice;
+               gym.location.longitude = req.body.longitude;
+               gym.location.latitude = req.body.longitude;
+               gym.save(function(err){
+                   if(err){
+                       res.send(err)
+                   }else{
+                       res.send("Gym has been successfully updated! ")
+                   }
+               })
+           }
+       })
+    });
+    //Route for removing a client1 linked with a personal trainer
+    router.put('/removeClient1/:id', function(req, res){
+       User.findById(req.params.id, function(err, data){
+           if(data){
+              data.client1= {};
+              data.save(function (err) {
+                  if(err){
+                      res.send("There has been an error un-linking you!");
+                  }else{
+                      res.send("You have now been un-linked with this client");
+                  }
+              })
+           }else{
+               res.send("There has been an error")
+           }
+       })
+    });
+    //Route for removing client2 linked with the personal trainer
+    router.put('/removeClient2/:id', function(req, res){
+        User.findById(req.params.id, function(err, data){
+            if(data){
+                data.client2= {};
+                data.save(function (err) {
+                    if(err){
+                        res.send("There has been an error un-linking you!");
+                    }else{
+                        res.send("You have now been un-linked with this client");
+                    }
+                })
+            }else{
+                res.send("There has been an error")
+            }
+        })
+    });
+    //Route for removing client3 linked with the personal trainer
+    router.put('/removeClient3/:id', function(req, res){
+        User.findById(req.params.id, function(err, data){
+            if(data){
+                data.client3= {};
+                data.save(function (err) {
+                    if(err){
+                        res.send("There has been an error un-linking you!");
+                    }else{
+                        res.send("You have now been un-linked with this client");
+                    }
+                })
+            }else{
+                res.send("There has been an error")
+            }
+        })
+    });
+    //Route for removing client4 linked with the personal trainer
+    router.put('/removeClient4/:id', function(req, res){
+        User.findById(req.params.id, function(err, data){
+            if(data){
+                data.client4= {};
+                data.save(function (err) {
+                    if(err){
+                        res.send("There has been an error un-linking you!");
+                    }else{
+                        res.send("You have now been un-linked with this client");
+                    }
+                })
+            }else{
+                res.send("There has been an error")
+            }
+        })
+    });
+    //Route for getting all session information for a specific user
+    router.get('/getSingleUserSessions/:userId', function(req,res){
+        Sessions.find({userId: req.params.userId}, function(err, session){
+            if(err){
+                res.send(err)
+            }else{
+                res.json(session)
+            }
+        })
+    });
+    //Route for getting all personal trainer requests
+    router.get('/personalTrainerRequests', function(req, res){
+       User.find({"isPersonalTrainerTemp":true}, function(err,requests){
+          if(err){
+              res.json(err)
+          }else{
+              res.json(requests)
+          }
+       });
+    });
+    router.put('/makeTrainer/:id', function(req,res){
+        User.findById(req.params.id, function(err,requests){
+            if(err){
+                res.json(err)
+            }else{
+                requests.isPersonalTrainerTemp = false;
+                requests.isPersonalTrainer = true;
+                requests.save(function(err, data){
+                    if(err){
+                        res.send(err)
+                    }else{
+                        res.json(data)
+                    }
+                })
+            }
+        });
+    });
     //Route for showing all personal trainers
     router.get('/getPersonalTrainers', function(req,res){
        User.find({"isPersonalTrainer": true}, function(err,user){
@@ -14,6 +166,119 @@ module.exports = function(router){
                res.json(user);
            }
        })
+    });
+    router.post('/addSession', function(req,res){
+           var session = new Sessions();
+           session.longitude = req.body.longitude;
+           session.latitude = req.body.latitude;
+           session.userId = req.body.userId;
+           session.username = req.body.username;
+           session.bodyFat = req.body.bodyFat;
+           session.weight = req.body.weight;
+           session.date = Date.now();
+           session.save(function(err){
+            if(err){
+                res.send(err);
+            }else{
+                res.json("Session has been added!")
+            }
+        })
+
+    });
+    router.get('/getSessionInfo/:userId', function(req,res){
+           Sessions.find({"userId": req.params.userId}, function(err,session){
+               if(err){
+                   res.json(err)
+               }else{
+                   res.json(session);
+               }
+           })
+    });
+    //Route for updating personal trainer info
+    router.put('/updatePT/:id', function(req,res){
+       User.findById(req.params.id, function(err, user){
+          if(err){
+              res.send("There has been an error:"+ err )
+          }else{
+
+              user.bio = req.body.bio;
+              user.collegeAttended = req.body.collegeAttended;
+              user.profileImg = req.body.profileImg;
+              user.save(function(err){
+                  if(err){
+                      res.send("Details have not been updated, there has been an error: " + err);
+                  }else{
+                      res.send("Profile information has been updated!");
+                  }
+              })
+          }
+       });
+
+    });//TODO STILL NEEDS WORK FOR ADDING A PROFILE PICTURE
+    //Route for linking clients with personal trainers
+
+    router.put('/linkWithPt/:id', function(req, res){
+        User.findById(req.params.id,function (err, user) {
+           //Checking to see if the userId already exists before its set
+                if(user.client1.userId!==req.body.userId){
+                    user.client1.username = req.body.username;
+                    user.client1.userId = req.body.userId;
+                    user.client1.bodyFat = req.body.bodyFat;
+                    user.client1.weight = req.body.weight;
+                    user.save(function (err) {
+                        if(err){res.send(err)
+                        }else{
+                            res.send("Congrats, You are now linked");
+                        }})
+                }else if(user.client2.userId!==req.body.userId){
+                    user.client2.username = req.body.username;
+                    user.client2.userId = req.body.userId;
+                    user.client2.bodyFat = req.body.bodyFat;
+                    user.client2.weight = req.body.weight;
+                    user.save(function (err) {
+                        if(err){res.send(err)}else{
+                            res.send("Congrats, You are now linked")
+                        }})
+                }else if(user.client3.userId!==req.body.userId){
+                    user.client3.username = req.body.username;
+                    user.client3.userId = req.body.userId;
+                    user.client3.bodyFat = req.body.bodyFat;
+                    user.client3.weight = req.body.weight;
+                    user.save(function (err) {
+                        if(err){res.send(err)}else{
+                            res.send("Congrats, You are now linked")
+                        }})
+                }else if(user.client4.userId!==req.body.userId){
+                    user.client4.username = req.body.username;
+                    user.client4.userId = req.body.userId;
+                    user.client4.bodyFat = req.body.bodyFat;
+                    user.client4.weight = req.body.weight;
+                    user.save(function (err) {
+                        if(err){res.send(err)}else{
+                            res.send("Congrats, You are now linked")
+                        }})
+                }else{
+                   res.send("Client could not be linked!")
+                }
+            })
+         });
+    //Route for linking a user with a gym
+    router.put('/linkWithGym/:id', function(req,res){
+        User.findById(req.params.id, function(err, user){
+            if(err){
+                res.send(err)
+            }else{
+                user.longitude = req.body.longitude;
+                user.latitude = req.body.latitude;
+                user.save(function(err){
+                    if(err){
+                        res.send("There has been an error!")
+                    }else{
+                        res.json("You have been successfully linked with this gym")
+                    }
+                })
+            }
+        })
     });
     //Route for adding programs
     router.post('/programs', function (req,res) {
@@ -204,6 +469,7 @@ module.exports = function(router){
         gym.monthlyPrice = req.body.monthlyPrice;
         gym.threeMonthPrice = req.body.threeMonthPrice;
         gym.yearPrice = req.body.yearPrice;
+        gym.profileImg = req.body.profileImg;
         gym.email = req.body.email;
         gym.website = req.body.website;
         gym.location.longitude = req.body.longitude;
@@ -213,6 +479,16 @@ module.exports = function(router){
                 res.send(err)
             }else{
                 res.json("Gym has been added to the database");
+            }
+        })
+    });
+    //Route for deleting a gym on the marketplace
+    router.delete('/deleteGym/:id', function(req,res){
+        Gym.findByIdAndRemove(req.params.id, function(data){
+            if(data){
+                res.send("This gym has now been removed")
+            }else{
+                res.send("Gym could not be removed")
             }
         })
     });
@@ -276,8 +552,7 @@ module.exports = function(router){
             user.username      = req.body.username;
             user.password      = req.body.password;
             user.email         = req.body.email;
-            user.isPersonalTrainer = req.body.isPersonalTrainer;
-
+            user.isPersonalTrainerTemp = req.body.isPersonalTrainerTemp;
         if(req.body.username == null || req.body.username === '' ||
             req.body.password == null || req.body.password ===''||
             req.body.email == null || req.body.email === ''){
@@ -314,28 +589,79 @@ module.exports = function(router){
     });
     //user login routes
     router.post('/authenticate', function(req,res){
-        User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id isAdmin').exec(function(err,user){
+        User.findOne({username:req.body.username}).select('email username password isPersonalTrainer _id isAdmin longitude latitude bodyFat height weight client1.username client1.userId client1.bodyFat client1.weight client2.username client2.userId client2.bodyFat client2.weight client3.username client3.userId client3.bodyFat client3.weight client4.username client4.userId client4.bodyFat client4.weight').exec(function(err,user){
             if(err) throw err;
                 if(!user){
                     res.json({success:false, message:'No such user found!'});
-                }else if (user){
-                    if (req.body.password) {
-                        var validatePassword = user.comparePassword(req.body.password);
-                        if (!validatePassword) {
-                            res.json({success : false, message : 'Password incorrect'});
-                        }else{
-                            var token = jwt.sign({username: user.username, email: user.email, isPersonalTrainer: user.isPersonalTrainer, userId: user._id, isAdmin: user.isAdmin}, secret, {expiresIn: '24h'});
-                            res.json({
-                                success : true,token:token
-                                /// You have to res the token here. You can return the user id if you want but make sure to include the token
-                            });
-                        }
+                }else if (user) if (req.body.password) {
+                    var validatePassword = user.comparePassword(req.body.password);
+                    if (!validatePassword) {
+                        res.json({success : false, message : 'Password incorrect'});
                     }else{
-                        res.json({success : false, message : 'No password provided!'});
-                    }﻿
-                  }
-               })
-             });
+                        var token = jwt.sign(
+                            {
+                                username: user.username,
+                                email: user.email,
+                                isPersonalTrainer: user.isPersonalTrainer,
+                                userId: user._id,
+                                isAdmin: user.isAdmin,
+                                longitude: user.longitude,
+                                latitude: user.latitude,
+                                bodyFat: user.bodyFat,
+                                height: user.height,
+                                weight: user.weight,
+                                user1_username:user.client1.username,
+                                user1_userId:user.client1.userId,
+                                user1_bodyFat:user.client1.bodyFat,
+                                user1_weight:user.client1.weight,
+                                user2_username:user.client2.username,
+                                user2_userId:user.client2.userId,
+                                user2_bodyFat:user.client2.bodyFat,
+                                user2_weight:user.client2.weight,
+                                user3_username:user.client3.username,
+                                user3_userId:user.client3.userId,
+                                user3_bodyFat:user.client3.bodyFat,
+                                user3_weight:user.client3.weight,
+                                user4_username:user.client4.username,
+                                user4_userId:user.client4.userId,
+                                user4_bodyFat:user.client4.bodyFat,
+                                user4_weight:user.client4.weight
+
+                            }, secret, {expiresIn: '24h'});
+                        res.json({
+                            success : true,
+                            token:token,
+                            userId:user._id,
+                            username:user.username,
+                            bodyFat:user.bodyFat,
+                            weight:user.weight,
+                            longitude: user.longitude,
+                            latitude: user.latitude,
+                            user1_username: user.client1.username,
+                            user1_userId: user.client1.userId,
+                            user1_bodyFat: user.client1.bodyFat,
+                            user1_weight: user.client1.weight,
+                            user2_username: user.client2.username,
+                            user2_userId: user.client2.userId,
+                            user2_bodyFat: user.client2.bodyFat,
+                            user2_weight: user.client2.weight,
+                            user3_username: user.client3.username,
+                            user3_userId: user.client3.userId,
+                            user3_bodyFat: user.client3.bodyFat,
+                            user3_weight: user.client3.weight,
+                            user4_username: user.client4.username,
+                            user4_userId: user.client4.userId,
+                            user4_bodyFat: user.client4.bodyFat,
+                            user4_weight: user.client4.weight
+
+                            /// You have to res the token here. You can return the user id if you want but make sure to include the token
+                        });
+                    }
+                }else{
+                    res.json({success : false, message : 'No password provided!'});
+                }
+        })
+    });
     //Middleware used for decrypting token
     router.use(function(req,res,next){
        var token = req.body.token||req.body.query||req.headers['x-access-token'];
