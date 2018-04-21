@@ -5,7 +5,6 @@ var bodyParser  = require('body-parser');
 var router      = express.Router();
 var appRoutes   = require('./app/routes/api')(router);
 var app         = express();
-var port        = process.env.PORT || 8080;
 var path        = require('path');
 var passport    = require('passport');
 var social      = require('./app/passport/passport')(app, passport);
@@ -28,10 +27,7 @@ app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
-//Process.env.PORT - If deploying to an environment that requires a certain port then it will use that one.
-app.listen(port, function() {
-    console.log('Running The Server on port ' + port);
-});
+
 
 
 module.exports = app;
