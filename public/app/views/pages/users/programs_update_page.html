@@ -1,0 +1,596 @@
+<style>
+    #days{
+        margin-left: 250px;
+    }
+    body{
+        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/4RUieTItxik2c5fvx/simple-animated-geometric-background-with-squares-4k-ultra-high-definition-video-loop_hzhlwak8x_thumbnail-full01.png");
+    }
+    #btn1,#btn2,#btn3,#btn4,#btn5,#btn6,#btn7{
+        margin-left: 400px;
+    }
+</style>
+<div class="row show-hide-message" ng-show="main.Success">
+    <div class="alert alert-success">{{main.Success}}</div>
+</div>
+<br>
+<div class="row show-hide-message" ng-show="main.error">
+    <div class="alert alert-danger">{{main.error}}</div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#days').find('a:first').tab('show');
+    });
+</script>
+<div class="jumbotron">
+    <h4 class="text-center">Program Updater</h4>
+    <h6 class="text-center">Navigate through each day and update exercises</h6>
+    <hr class="featurette-divider">
+    <br>
+    <ul class="nav nav-pills" id="days">
+        <button><li class="active"><a data-toggle="tab" href="#home">Monday</a></li></button>
+        <button ><li><a data-toggle="tab"  href="#menu1">Tuesday</a></li ></button>
+        <button><li><a data-toggle="tab" href="#menu2">Wednesday</a></li></button>
+        <button><li><a data-toggle="tab" href="#menu3">Thursday</a></li></button>
+        <button><li><a data-toggle="tab" href="#menu4">Friday</a></li></button>
+        <button><li><a data-toggle="tab" href="#menu5">Saturday</a></li></button>
+        <button><li><a data-toggle="tab" href="#menu6">Sunday</a></li></button>
+    </ul>
+
+    <div class="tab-content">
+
+        <div id="home" class="tab-pane fade in active">
+            <br>
+            <form ng-submit="main.updateProgram(formData);">
+
+                <div class="container">
+                    <input type="text" class="form-control"  ng-model="formData.name" placeholder="Name this program">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day1Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day1MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day1Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day1Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day1RestTime1">
+                            <br>
+
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day1Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day1MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day1Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day1Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day1RestTime2">
+                            <br>
+                        </div>
+
+
+                        <div class="w-100"></div>
+
+
+                        <div class="col">
+
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day1Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day1MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day1Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day1Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day1RestTime3">
+                            <br>
+
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day1Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day1MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day1Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day1Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day1RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <button id="btn1" class="btn btn-primary" type="submit">Update Program</button>
+
+            </form>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            <form ng-submit="main.updateProgram(formData);">
+                <br>
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day2Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day2MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day2Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day2Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day2RestTime1">
+                            <br>
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day2Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day2MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day2Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day2Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day2RestTime2">
+                            <br>
+                        </div>
+
+
+                        <div class="w-100"></div>
+
+
+                        <div class="col">
+
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day2Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day2MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day2Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day2Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day2RestTime3">
+                            <br>
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day2Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day2MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day2Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day2Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day2RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <button id="btn2" class="btn btn-primary" type="submit">Update Program</button>
+
+            </form>
+        </div>
+
+        <div id="menu2" class="tab-pane fade">
+            <form ng-submit="main.updateProgram(formData);" >
+                <div class="container">
+                    <br>
+                    <div class="row">
+
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day3Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day3MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day3Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day3Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day3RestTime1">
+                            <br>
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day3Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day3MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day3Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day3Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day3RestTime2">
+                            <br>
+                        </div>
+
+
+                        <div class="w-100"></div>
+
+
+                        <div class="col">
+
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day3Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day3MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day3Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day3Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day3RestTime3">
+                            <br>
+                        </div>
+
+                        <div class="col">
+
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day3Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day3MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day3Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day3Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day3RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <button  id="btn3" class="btn btn-primary" type="submit">Update Program</button>
+
+            </form>
+        </div>
+
+        <div id="menu3" class="tab-pane fade">
+
+            <form ng-submit="main.addProgram(formData);">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day4Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day4MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day4Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day4Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day4RestTime1">
+                            <br>
+
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day4Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day4MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day4Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day4Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day4RestTime2">
+                            <br>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day4Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day4MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day4Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day4Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day4RestTime3">
+                            <br>
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day4Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day4MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day4Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day4Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day4RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+
+                    <button id="btn4" class="btn btn-primary"  type="submit">Create</button>
+
+                </div>
+            </form>
+
+        </div>
+
+        <div id="menu4" class="tab-pane fade">
+
+            <form ng-submit="main.addProgram(formData);">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day5Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day5MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day5Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day5Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day5RestTime1">
+                            <br>
+
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day5Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day5MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day5Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day5Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day5RestTime2">
+                            <br>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day5Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day5MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day5Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day5Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day5RestTime3">
+                            <br>
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day5Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day5MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day5Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day5Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day5RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+
+                    <button id="btn5" class="btn btn-primary"type="submit">Create</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div id="menu5" class="tab-pane fade">
+
+            <form ng-submit="main.addProgram(formData);">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day6Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day6MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day6Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day6Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day6RestTime1">
+                            <br>
+
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day6Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day6MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day6Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day6Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day6RestTime2">
+                            <br>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day6Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day6MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day6Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day6Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day6RestTime3">
+                            <br>
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day6Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day6MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day6Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day6Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day6RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+
+                    <button id="btn6" class="btn btn-primary" type="submit">Create</button>
+
+                </div>
+            </form>
+
+        </div>
+
+        <div id="menu6" class="tab-pane fade">
+            <form ng-submit="main.addProgram(formData);">
+                <div class="container">
+                    <br>
+                    <div class="row">
+                        <div class="col">
+
+                            <h5>Exercise 1</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day7Exercise1">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day7MuscleGroup1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day7Sets1">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day7Reps1">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day7RestTime1">
+                            <br>
+
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 2</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day7Exercise2">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day7MuscleGroup2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day7Sets2">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day7Reps2">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day7RestTime2">
+                            <br>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                            <h5>Exercise 3</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day7Exercise3">
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day7MuscleGroup3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day7Sets3">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day7Reps3">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day7RestTime3">
+                            <br>
+
+                        </div>
+                        <div class="col">
+                            <h5>Exercise 4</h5>
+                            <hr class="featurette-divider">
+                            <input class="form-control" type="text"  name="exerciseName" placeholder="Exercise Name" ng-model="formData.day7Exercise4" >
+                            <br>
+                            <input class="form-control" type="text"  placeholder="Muscle Type" ng-model="formData.day7MuscleGroup4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Sets" ng-model="formData.day7Sets4">
+                            <br>
+                            <input class="form-control" type="number" placeholder="Reps" ng-model="formData.day7Reps4">
+                            <br>
+                            <input class="form-control" type="Number" placeholder="Rest Time" ng-model="formData.day7RestTime4">
+                            <br>
+                        </div>
+                        <br>
+                    </div>
+
+                    <button id="btn7" class="btn btn-primary" type="submit">Create</button>
+
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+

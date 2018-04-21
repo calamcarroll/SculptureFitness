@@ -2,8 +2,12 @@ angular.module('programsController', ['authServices'])
     .controller('programsCtrl', function(Auth,$http,$scope,$location){
         app = this;
         app.choice = function(id) {
-            programId = id;
+             programId = id;
             $location.path("myPrograms");
+        };
+        app.find = function(id) {
+             var programId = id;
+            $location.path("programsFinder_programs");
         };
 
         Auth.getUser().then(function(data){

@@ -5,10 +5,55 @@ var Sessions                = require('../models/sessions');
 var jwt                    = require('jsonwebtoken');
 var secret                 = 'mySecret';
 var bcrypt                 = require('bcrypt-nodejs');
-var fs = require("fs");
+var fs                     = require("fs");
+var readFileSync           = require("fs").readFileSync;
 
-var readFileSync = require("fs").readFileSync;
 module.exports = function(router){
+    router.get('/personalTrainersPrograms/:createdBy', function(req,res){
+        Program.find({"createdBy":req.params.createdBy}, function(err, programs){
+            if(err){
+                res.send("There has been an error retrieving these programs! " + err)
+            }else{
+                res.json(programs)
+            }
+        })
+    });
+    router.get("/getAllPrograms", function(req,res){
+        Program.find(function(err, program){
+            if(!program ){
+                res.send("There has been an error retrieving this program" + err)
+            }else{
+                res.json(program)
+            }
+        });
+    });
+    router.delete('/deleteProgram/:id', function(req,res){
+        Program.findByIdAndRemove(req.params.id, function(err, program){
+                    if(!program){
+                        res.send("Program could not be deleted! "+ err);
+                    }else{
+                        res.json("This program is now deleted: "+program);
+                    }
+        })
+    });
+    router.delete('/deleteUser/:id', function(req,res){
+        User.findByIdAndRemove(req.params.id,function(user){
+            if(user){
+                res.send("User has been succesfully deleted");
+            }else{
+                res.send("User could not be deleted!");
+            }
+        })
+    });
+    router.get('/getAllUserInfo', function(req,res){
+        User.find(function(err, user){
+            if(err){
+                res.send(err)
+            }else{
+                res.json(user)
+            }
+        })
+    });
     //Route for getting all client Info
     router.get('/getClientInfo/:id', function (req,res) {
        User.findById(req.params.id, function (err, data) {
@@ -214,12 +259,25 @@ module.exports = function(router){
           }
        });
 
-    });//TODO STILL NEEDS WORK FOR ADDING A PROFILE PICTURE
+    });
+    //Route for adding the personal trainers id to the client
+    router.put("/addPTIDToClient/:id", function(req,res){
+        User.findById(req.params.trainerId, function(err, data){
+            data.personalTrainerId = req.body.trainerId;
+            data.save(function(err){
+                if(err){
+                    res.send(err);
+                }else{
+                    res.send("Data has been linked");
+                }
+            })
+        });
+    });
     //Route for linking clients with personal trainers
-
     router.put('/linkWithPt/:id', function(req, res){
         User.findById(req.params.id,function (err, user) {
            //Checking to see if the userId already exists before its set
+
                 if(user.client1.userId!==req.body.userId){
                     user.client1.username = req.body.username;
                     user.client1.userId = req.body.userId;
@@ -231,6 +289,7 @@ module.exports = function(router){
                             res.send("Congrats, You are now linked");
                         }})
                 }else if(user.client2.userId!==req.body.userId){
+
                     user.client2.username = req.body.username;
                     user.client2.userId = req.body.userId;
                     user.client2.bodyFat = req.body.bodyFat;
@@ -240,6 +299,7 @@ module.exports = function(router){
                             res.send("Congrats, You are now linked")
                         }})
                 }else if(user.client3.userId!==req.body.userId){
+
                     user.client3.username = req.body.username;
                     user.client3.userId = req.body.userId;
                     user.client3.bodyFat = req.body.bodyFat;
@@ -249,6 +309,7 @@ module.exports = function(router){
                             res.send("Congrats, You are now linked")
                         }})
                 }else if(user.client4.userId!==req.body.userId){
+
                     user.client4.username = req.body.username;
                     user.client4.userId = req.body.userId;
                     user.client4.bodyFat = req.body.bodyFat;
@@ -277,6 +338,58 @@ module.exports = function(router){
                         res.json("You have been successfully linked with this gym")
                     }
                 })
+            }
+        })
+    });
+    router.get('/programByName/name', function(req,res){
+       Program.find({"name": req.params.name}, function(data){
+           if(data){
+
+               res.send(data);
+           }else{
+               res.send("There has been an error")
+           }
+       })
+    });
+    router.put('/program_next/name', function(req,res){
+        Program.find({"name": req.params.name}, function(err,program){
+            if(err){
+                res.send("There has been an error with this request:  "+err)
+            }else{
+                if(req.body.day2MuscleGroup1){
+                    ///Day 2 data
+                    program.day2.muscleGroup1 = req.body.day2MuscleGroup1;
+                    program.day2.exercise1 = req.body.day2Exercise1;
+                    program.day2.sets1 = req.body.day2Sets1;
+                    program.day2.reps1 = req.body.day2Reps1;
+                    program.day2.restTime1 = req.body.day2RestTime1;
+
+                    program.day2.muscleGroup2 = req.body.day2MuscleGroup2;
+                    program.day2.exercise2 = req.body.day2Exercise2;
+                    program.day2.sets2 = req.body.day2Sets2;
+                    program.day2.reps2 = req.body.day2Reps2;
+                    program.day2.restTime2 = req.body.day2RestTime2;
+
+                    program.day2.muscleGroup3 = req.body.day2MuscleGroup3;
+                    program.day2.exercise3 = req.body.day2Exercise3;
+                    program.day2.sets3 = req.body.day2Sets3;
+                    program.day2.reps3 = req.body.day2Reps3;
+                    program.day2.restTime3 = req.body.day2RestTime3;
+
+                    program.day2.muscleGroup4 = req.body.day1MuscleGroup4;
+                    program.day2.exercise4 = req.body.day1Exercise4;
+                    program.day2.sets4 = req.body.day1Sets4;
+                    program.day2.reps4 = req.body.day1Reps4;
+                    program.day2.restTime4 = req.body.day2RestTime4;
+
+                    program.save(function(err){
+                        if(err){
+                            res.send(err)
+                        }else{
+                            res.send("Day 2 has been successfully added to your program! ")
+                        }
+                    })
+                }
             }
         })
     });
@@ -388,6 +501,81 @@ module.exports = function(router){
         program.day4.sets4 = req.body.day4Sets4;
         program.day4.reps4 = req.body.day4Reps4;
         program.day4.restTime4 = req.body.day4RestTime4;
+
+        //day 5 data
+        program.day5.muscleGroup1 = req.body.day5MuscleGroup1;
+        program.day5.exercise1 = req.body.day5Exercise1;
+        program.day5.sets1 = req.body.day5Sets1;
+        program.day5.reps1 = req.body.day5Reps1;
+        program.day5.restTime1 = req.body.day5RestTime1;
+
+        program.day5.muscleGroup2 = req.body.day5MuscleGroup2;
+        program.day5.exercise2 = req.body.day5Exercise2;
+        program.day5.sets2 = req.body.day5Sets2;
+        program.day5.reps2 = req.body.day5Reps2;
+        program.day5.restTime2 = req.body.day5RestTime2;
+
+        program.day5.muscleGroup3 = req.body.day5MuscleGroup3;
+        program.day5.exercise3 = req.body.day5Exercise3;
+        program.day5.sets3 = req.body.day5Sets3;
+        program.day5.reps3 = req.body.day5Reps3;
+        program.day5.restTime3 = req.body.day5RestTime3;
+
+        program.day5.muscleGroup4 = req.body.day5MuscleGroup4;
+        program.day5.exercise4 = req.body.day5Exercise4;
+        program.day5.sets4 = req.body.day5Sets4;
+        program.day5.reps4 = req.body.day5Reps4;
+        program.day5.restTime4 = req.body.day5RestTime4;
+
+        //day 6 data
+        program.day6.muscleGroup1 = req.body.day6MuscleGroup1;
+        program.day6.exercise1 = req.body.day6Exercise1;
+        program.day6.sets1 = req.body.day6Sets1;
+        program.day6.reps1 = req.body.day6Reps1;
+        program.day6.restTime1 = req.body.day6RestTime1;
+
+        program.day6.muscleGroup2 = req.body.day6MuscleGroup2;
+        program.day6.exercise2 = req.body.day6Exercise2;
+        program.day6.sets2 = req.body.day6Sets2;
+        program.day6.reps2 = req.body.day6Reps2;
+        program.day6.restTime2 = req.body.day6RestTime2;
+
+        program.day6.muscleGroup3 = req.body.day6MuscleGroup3;
+        program.day6.exercise3 = req.body.day6Exercise3;
+        program.day6.sets3 = req.body.day6Sets3;
+        program.day6.reps3 = req.body.day6Reps3;
+        program.day6.restTime3 = req.body.day6RestTime3;
+
+        program.day6.muscleGroup4 = req.body.day6MuscleGroup4;
+        program.day6.exercise4 = req.body.day6Exercise4;
+        program.day6.sets4 = req.body.day6Sets4;
+        program.day6.reps4 = req.body.day6Reps4;
+        program.day6.restTime4 = req.body.day6RestTime4;
+
+        //day 7 data
+        program.day7.muscleGroup1 = req.body.day7MuscleGroup1;
+        program.day7.exercise1 = req.body.day7Exercise1;
+        program.day7.sets1 = req.body.day7Sets1;
+        program.day7.reps1 = req.body.day7Reps1;
+        program.day7.restTime1 = req.body.day7RestTime1;
+
+        program.day7.muscleGroup2 = req.body.day7MuscleGroup2;
+        program.day7.exercise2 = req.body.day7Exercise2;
+        program.day7.sets2 = req.body.day7Sets2;
+        program.day7.reps2 = req.body.day7Reps2;
+        program.day7.restTime2 = req.body.day7RestTime2;
+
+        program.day7.muscleGroup3 = req.body.day7MuscleGroup3;
+        program.day7.exercise3 = req.body.day7Exercise3;
+        program.day7.sets3 = req.body.day7Sets3;
+        program.day7.reps3 = req.body.day7Reps3;
+        program.day7.restTime3 = req.body.day7RestTime3;
+
+        program.day7.muscleGroup4 = req.body.day7MuscleGroup4;
+        program.day7.exercise4 = req.body.day7Exercise4;
+        program.day7.sets4 = req.body.day7Sets4;
+        program.day7.reps4 = req.body.day7Reps4;
+        program.day7.restTime4 = req.body.day7RestTime4;
 
         program.save(function(err){
             if(err){

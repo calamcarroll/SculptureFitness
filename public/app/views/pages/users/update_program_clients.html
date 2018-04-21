@@ -1,0 +1,41 @@
+<style>
+    #btn{
+        margin-top: 130px;
+    }
+    body{
+        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/4RUieTItxik2c5fvx/simple-animated-geometric-background-with-squares-4k-ultra-high-definition-video-loop_hzhlwak8x_thumbnail-full01.png");
+    }
+</style>
+<div class="jumbotron">
+    <h2 class="text-center">Update a clients program</h2>
+    <h5 class="text-center">Choose a clients program you wish to update!</h5>
+
+    <hr class="featurette-divider">
+    <div class="row show-hide-message" ng-show="main.Success">
+        <div class="alert alert-success">{{main.Success}}</div>
+    </div>
+    <br>
+    <div class="row show-hide-message" ng-show="main.error">
+        <div class="alert alert-danger">{{main.error}}</div>
+    </div>
+    <div class="card" ng-repeat="programs in personalTrainerProgramsList">
+
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-3" >
+                        <h6>Program Name: <strong>{{programs.name}}</strong></h6>
+                        <h6>Date:  <strong>{{programs.date| date : format : timezone}}</strong></h6>
+                    </div>
+                    <div class=".col-md-1 .col-md-offset-1">
+                        <button type="button" class="btn btn-info" ng-click="main.goToUpdateProgramPage(programs._id)"><span class="fa fa-edit"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+</div>

@@ -16,7 +16,11 @@
 
 </style>
 <div class="jumbotron">
-
+    <script>
+        $(document).ready(function(){
+            $('#pills').find('a:first').tab('show');
+        });
+    </script>
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" >
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">{{main.username}}'s Profile</a>
@@ -66,12 +70,7 @@
                                 Find Gyms
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span class="fa fa-heartbeat"></span>
-                                Diets and More
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -79,7 +78,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"  ng-controller="singleProgramsCtrl as program">
 
                       <p>{{main.name}}</p>
-                    <ul class="nav nav-pills">
+                    <ul class="nav nav-pills" id="pills">
                         <button><li class="active"><a data-toggle="tab" href="#home">Monday</a></li></button>
                         <button ><li><a data-toggle="tab"  href="#menu1">Tuesday</a></li ></button>
                         <button><li><a data-toggle="tab" href="#menu2">Wednesday</a></li></button>

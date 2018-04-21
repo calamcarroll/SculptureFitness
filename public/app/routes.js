@@ -16,9 +16,30 @@ app.config(function($routeProvider,$locationProvider){
 
     $routeProvider
         .when('/PtRequests',{
-            templateUrl: 'app/views/pages/trainers/PtRequests.html',
-            controller:'mainController',
-            controllerAs: 'main'
+            templateUrl: 'app/views/pages/trainers/PtRequests.html'
+        })
+        .when('/createProgram',{
+            templateUrl: 'app/views/pages/users/createProgram.html'
+        })
+        .when('/programs_update_page',{
+            templateUrl: 'app/views/pages/users/programs_update_page.html'
+        })
+        .when('/programFinder',{
+            templateUrl: 'app/views/pages/general/programFinder.html',
+            controller:'programsCtrl',
+            controllerAs: 'programsCtrl'
+        })
+        .when('/preDeleteProgram',{
+            templateUrl: 'app/views/pages/users/preDeleteProgram.html'
+        })
+        .when('/program_landingPage', {
+            templateUrl: 'app/views/pages/users/program_landingPage.html'
+        })
+        .when('/update_program_clients', {
+            templateUrl: 'app/views/pages/users/update_program_clients.html'
+        })
+        .when('/create_program_clients',{
+            templateUrl: 'app/views/pages/users/create_program_clients.html'
         })
         .when('/clientSessions',{
             templateUrl: 'app/views/pages/trainers/clientSessions.html'
@@ -73,6 +94,11 @@ app.config(function($routeProvider,$locationProvider){
         })
         .when('/myPrograms',{
             templateUrl: 'app/views/pages/users/myPrograms.html',
+            controller:'singleProgramsCtrl',
+            controllerAs: 'singleProgramsCtrl'
+        })
+        .when('/programsFinder_programs',{
+            templateUrl: 'app/views/pages/general/programsFinder_programs.html',
             controller:'singleProgramsCtrl',
             controllerAs: 'singleProgramsCtrl'
         })

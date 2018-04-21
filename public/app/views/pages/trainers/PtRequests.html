@@ -93,36 +93,29 @@
                 <h1 class="h2">Site User base</h1>
             </div>
 
-
-
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Bio</th>
-                    <th>College</th>
-                    <th>Email</th>
                     <th>Personal Trainer</th>
+                    <th>Personal Trainer Request</th>
                     <th>Administrator</th>
 
                 </tr>
                 </thead>
-                <tbody ng-repeat="request in requestList">
+                <tbody ng-repeat="user in userList">
                 <tr>
-                    <td>{{request.username}}</td>
-                    <td>{{request.bio}}</td>
-                    <td>{{request.collegeAttended}}</td>
-                    <td>{{request.email}}</td>
-                    <td>{{request.isPersonalTrainerTemp}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.isPersonalTrainer}}</td>
+                    <th> <button class="btn btn-info"  ng-show="{{user.isPersonalTrainerTemp}}" ng-click="main.makeTrainer(user._id)">Make Trainer</button></th>
+                    <td>{{user.isAdmin}}</td>
 
-                    <td>
-                        <button class="btn btn-info" ng-click="main.makeTrainer(request._id)">Delete</button>
+                     <td>
+                        <button class="btn btn-danger" ng-click="main.deleteUser(user._id)"><span class="fa fa-trash"></span></button>
                     </td>
-                </tr>
+                   </tr>
                 </tbody>
             </table>
-
-
         </main>
     </div>
 </div>

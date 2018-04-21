@@ -9,7 +9,9 @@ angular.module('mainController', ['authServices'])
                     app.username = data.data.username;
                     app.email = data.data.email;
                     app.userId = data.data.userId;
+                    app.personalTrainerName = data.data.personalTrainerName;
                     app.isPersonalTrainer = data.data.isPersonalTrainer;
+                    app.isPersonalTrainerTemp = data.data.isPersonalTrainerTemp;
                     app.isAdmin = data.data.isAdmin;
                     app.bodyFat = data.data.bodyFat;
                     app.weight = data.data.weight;
@@ -62,6 +64,69 @@ angular.module('mainController', ['authServices'])
         Auth.getPersonalTrainerRequests().then(function (data){
             $scope.requestList = data.data;
         });
+        Auth.getAllUserInfo().then(function (data) {
+             $scope.userList = data.data;
+        });
+        Auth.getAllPrograms().then(function (data) {
+            $scope.allProgramsList = data.data;
+        });
+
+
+        this.goToDeleteProgramsPage = function(id){
+            Auth.personalTrainersPrograms(id).then(function(data){
+                $scope.personalTrainerProgramsList = data.data;
+            });
+        };
+        this.deleteProgram = function(id){
+            $http.delete('api/deleteProgram/'+id).then(function(){
+                $timeout(function () {
+                    $location.path('/program_landingPage');
+                    app.Success= false;
+                },2000);
+            });
+        };
+        this.goToCreateProgramPage = function(id){
+
+            Auth.getUser().then(function(data){
+                $scope.formData = {};
+                $scope.formData.createdFor = id;
+                $scope.formData.createdBy = data.data.userId;
+                $location.path('/createProgram')
+            });
+
+        };
+        this.gatherProgramInfo  = function(formData){
+            if(formData){
+                app.Success = true;
+                app.Success = "Program data has been added, go to the next day to add more, Hit create when you are done"
+
+            }else{
+                app.Success = false;
+                app.error = true;
+                app.error = "No data found for this program!"
+            }
+        };
+
+        this.addProgram = function(formData){
+                $http.post('api/programs',formData).then(function(data){
+                    if(!data){
+                        console.log("There has been an error");
+                    }else{
+                        $timeout(function () {
+                            $location.path('/program_landingPage');
+                            app.Success= false;
+                        },2000);
+                    }
+                })
+        };
+        this.deleteUser = function(id){
+            Auth.deleteUser(id).then(function () {
+                $timeout(function () {
+                    $location.path('/gym_options');
+                    app.Success= false;
+                },2000);
+            })
+        };
 
         this.deleteGym = function (id) {
             Auth.deleteGym(id).then(function(){
@@ -71,11 +136,20 @@ angular.module('mainController', ['authServices'])
                 },2000);
                 })
         };
-        this.goToUpdatePage= function(id){
+        app.goToUpdatePage= function(id){
             $http.get('Api/getSingleGym/'+id).then(function(gyms){
                 $scope.formData = {};
                 $scope.formData = gyms.data;
+
               $location.path("/finalGymUpdate")
+            });
+
+        };
+        app.goToUpdateProgramPage= function(id){
+            $http.get('Api/getProgramsById/'+id).then(function(program){
+                $scope.formData={};
+                $scope.formData = program;
+                $location.path("/programs_update_page")
             });
 
         };
@@ -204,35 +278,31 @@ angular.module('mainController', ['authServices'])
                 }
             })
         };
-        this.linkClient = function(id){
+        this.linkClient = function(trainerId){
+
 
           Auth.getUser().then(function(data){
-
               $scope.formData = {};
               $scope.formData.username = data.data.username;
               $scope.formData.userId = data.data.userId;
               $scope.formData.bodyFat = data.data.bodyFat;
               $scope.formData.weight = data.data.weight;
-
-              Auth.linkWithPt(id,$scope.formData).then(function(data){
-
-                  if(data){
-                      app.Success= true;
-                      app.error = false;
-                      app.Success = "Congrats you are now linked";
-                      $timeout(function() {
-                          $location.path('/profile');
-                      }, 2000);
-                  }else{
-                      app.Success = false;
+              var id = data.data.userId;
+              Auth.linkWithPt(trainerId, $scope.formData).then(function(data){
+                  if(!data){
                       app.error = true;
-                      app.error = "Could not be linked with this client!"
-
-
+                      app.error = "This personal trainer is all booked up!";
+                      app.Success = false;
+                  }else{
+                      app.Success = true;
+                      app.Success = "A request has been sent to this personal trainer";
+                      $timeout(function () {
+                          $location.path('/profile');
+                      },2000);
                   }
-
               });
-          })
+
+          });
         };
         this.linkWithGym = function(longitude, latitude){
             Auth.getUser().then(function(data){

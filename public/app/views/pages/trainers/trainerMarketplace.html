@@ -27,9 +27,11 @@
                     <h6>Email: <strong>{{users.email}}</strong></h6>
                     <h6>Bio: <strong>{{users.bio}}</strong></h6>
                     <h6>Studied: <strong>{{users.collegeAttended}}</strong></h6>
+
+
                 </div>
                 <div class=".col-md-1 .col-md-offset-1">
-                    <button class="btn btn-success" id="btn" ng-click="main.linkClient(users._id)"><span class="fa fa-info-circle"></span> Request</button>
+                    <button type="button" class="btn btn-success" ng-click="main.linkClient(users._id)">Request</button>
                 </div>
             </div>
         </div>
@@ -38,3 +40,5 @@
 </div>
 
 <br>
+<!-- Section for modal when user gets linked with other trainer -->
+

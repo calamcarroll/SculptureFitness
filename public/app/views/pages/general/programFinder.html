@@ -1,0 +1,36 @@
+
+<style>
+    body{
+        background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/59/66/BbGq1U.jpg");
+    }
+    #mysearch{
+        margin-left: 330px;
+    }
+</style>
+<div class="jumbotron">
+    <h4 class="text-center">Welcome to the program finder</h4>
+    <h6 class="text-center">Use the search bar to find a program for you! </h6>
+    <br>
+    <input type="text" name="search" id="mysearch" class="form-control" ng-model="search"placeholder=" Search.." style="width: 350px">
+     <br>
+<div class="container">
+    <div class="card"ng-repeat="program in allProgramsList| filter:search">
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-8 col-md-push-3" >
+                        <h5><strong>{{program.name}}</strong></h5>
+                        <h8>{{program.date| date : format : timezone}}</h8>
+                    </div>
+                    <div class=".col-md-2 .col-md-offset-3">
+                        <button class="btn btn-success" ng-click="programsCtrl.find(program._id);" ><span class="fa fa-folder-open"></span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

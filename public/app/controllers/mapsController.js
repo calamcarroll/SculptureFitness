@@ -1,4 +1,4 @@
-var cities = [
+var gyms = [
     {
         place : 'GoldStone Fitness',
         desc : '',

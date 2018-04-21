@@ -10,9 +10,29 @@ angular.module('authServices', [])
               return data;
         })
     };
+    authFactory.getAllUserInfo = function () {
+        return $http.get('/api/getAllUserInfo').then(function(data){
+            return data;
+        });
+    };
     authFactory.deleteGym = function (id) {
         return $http.delete('/api/deleteGym/' + id).then(function(data) {
             return data;
+        });
+    };
+    authFactory.deleteUser = function (id) {
+        return $http.delete('/api/deleteUser/' + id).then(function(data) {
+            return data;
+        });
+    };
+    authFactory.personalTrainersPrograms = function(id){
+        return $http.get('api/personalTrainersPrograms/'+ id).then(function(programs) {
+            return programs;
+        });
+    };
+    authFactory.getAllPrograms = function(){
+        return $http.get('api/getAllPrograms').then(function(programs) {
+            return programs;
         });
     };
     authFactory.getSingleSession = function(id){
@@ -80,6 +100,11 @@ angular.module('authServices', [])
         return $http.put('api/linkWithGym/'+ id,formData).then(function(users){
             return users;
         })
+    };
+    authFactory.addPTIDtoUser = function(id, trainerId ){
+        $http.put('api/addPTIDToClient/'+id ,trainerId).then(function (data) {
+            return data;
+        });
     };
     authFactory.listSessionInfo =function(id){
         return $http.get('api/getSessionInfo/' + id).then(function(users){

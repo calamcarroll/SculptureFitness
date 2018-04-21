@@ -1,0 +1,98 @@
+<style>
+    body{
+        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/4RUieTItxik2c5fvx/simple-animated-geometric-background-with-squares-4k-ultra-high-definition-video-loop_hzhlwak8x_thumbnail-full01.png");
+    }
+</style>
+<div class="jumbotron">
+<div class="container-fluid text-center" >
+
+    <h2>{{main.username}}'s clients</h2>
+    <h5>Choose a client you wish to create a program for!</h5>
+
+    <hr class="featurette-divider">
+
+<div class="card">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-pull-9">
+                    <span><img src="{{users.profileImg|| 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'}}" class=".img-thumbnail" width="150" height="150"></span>
+                </div>
+                <div class="col-md-6 col-md-push-3" >
+                    <h6>Username: <strong>{{main.client1_name}}</strong></h6>
+                    <h6>Body Fat: <strong>{{main.client1_bodyFat}}</strong></h6>
+                    <h6>Weight: <strong>{{main.client1_weight}}</strong></h6>
+
+                </div>
+                <div class=".col-md-1 .col-md-offset-1">
+                    <button type="button" class="btn btn-success" ng-click="main.goToCreateProgramPage(main.client1_userId)">Create Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-pull-9">
+                    <span><img src="{{users.profileImg|| 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'}}" class=".img-thumbnail" width="150" height="150"></span>
+                </div>
+                <div class="col-md-6 col-md-push-3" >
+                    <h6>Username: <strong>{{main.client2_name}}</strong></h6>
+                    <h6>Body Fat: <strong>{{main.client2_bodyFat}}</strong></h6>
+                    <h6>Weight: <strong>{{main.client2_weight}}</strong></h6>
+                </div>
+                <div class=".col-md-1 .col-md-offset-1">
+                    <button type="button" class="btn btn-success" ng-click="main.goToCreateProgramPage(main.client2_userId)">Create Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-pull-9">
+                    <span><img src="{{users.profileImg|| 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'}}" class=".img-thumbnail" width="150" height="150"></span>
+                </div>
+                <div class="col-md-6 col-md-push-3" >
+                    <h6>Username: <strong>{{main.client3_name}}</strong></h6>
+                    <h6>Body Fat: <strong>{{main.client3_bodyFat}}</strong></h6>
+                    <h6>Weight: <strong>{{main.client3_weight}}</strong></h6>
+
+                </div>
+                <div class=".col-md-1 .col-md-offset-1">
+                    <button type="button" class="btn btn-success" ng-click="main.goToCreateProgramPage(main.client3_userId)">Create Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-pull-9">
+                    <span><img src="{{users.profileImg|| 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg'}}" class=".img-thumbnail" width="150" height="150"></span>
+                </div>
+                <div class="col-md-6 col-md-push-3" >
+                    <h6>Username: <strong>{{main.client4_name}}</strong></h6>
+                    <h6>Body Fat: <strong>{{main.client4_bodyFat}}</strong></h6>
+                    <h6>Weight: <strong>{{main.client4_weight}}</strong></h6>
+                </div>
+                <div class=".col-md-1 .col-md-offset-1">
+                    <button type="button" class="btn btn-success" ng-click="main.goToCreateProgramPage(main.client4_userId)">Create Program</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Section for modal when user gets linked with other trainer -->
+</div>
+</div>
