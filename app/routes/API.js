@@ -18,6 +18,24 @@ module.exports = function(router){
             }
         })
     });
+    router.get('/programById/:id', function(req,res){
+        Program.findById(req.params.id, function (err,program) {
+            if(!program){
+                res.send("There has been an error: " + err);
+            }else{
+                res.json(program.day1);
+            }
+        })
+    });
+    router.get('/programDay', function(req,res){
+       Program.find(function(err,program){
+           if(!program){
+               res.send("There has been an error here!")
+           }else{
+               res.json(program)
+           }
+       })
+    });
     router.get("/getAllPrograms", function(req,res){
         Program.find(function(err, program){
             if(!program ){

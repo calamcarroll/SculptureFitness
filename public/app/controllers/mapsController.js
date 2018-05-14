@@ -1,30 +1,3 @@
-var gyms = [
-    {
-        place : 'GoldStone Fitness',
-        desc : '',
-        lat : 52.233226,
-        long : -7.146934
-    },
-    {
-        place : 'Kingfisher Fitness',
-        desc : '',
-        lat : 52.243669,
-        long : -7.121648
-    },
-    {
-        place : 'crystal sports and leisure waterford',
-        desc : '',
-        lat : 52.24329,
-        long : -7.150439
-    },
-    {
-        place : 'ben dunne gym waterford',
-        desc : '',
-        lat : 52.241282,
-        long : -7.127282
-    }
-];
-
 
 var mapApp = angular.module('mapsController', ['gymServices']);
 mapApp.controller('mapsController', function ($scope, Gym) {

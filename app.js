@@ -8,6 +8,7 @@ var app         = express();
 var path        = require('path');
 var passport    = require('passport');
 var social      = require('./app/passport/passport')(app, passport);
+var port        = process.env.PORT || 8080;
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -21,6 +22,10 @@ mongoose.connect('mongodb://localhost:27017/SculptureFitnessDB',{ useMongoClient
     } else {
         console.log('Successfully connected to SculptureFitness Database');
     }
+});
+
+
+app.listen(port, function() {
 });
 
 app.get('*', function(req, res) {

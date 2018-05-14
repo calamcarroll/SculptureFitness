@@ -2,7 +2,7 @@ angular.module('programsController', ['authServices'])
     .controller('programsCtrl', function(Auth,$http,$scope,$location){
         app = this;
         app.choice = function(id) {
-             programId = id;
+              programId = id;
             $location.path("myPrograms");
         };
         app.find = function(id) {
@@ -24,6 +24,7 @@ angular.module('programsController', ['authServices'])
     })
 .controller('singleProgramsCtrl', function(Auth,$http,$scope){
     $http.get('Api/getProgramsById/'+ programId).then(function(programByName){
+        console.log(programByName.data);
         $scope.data = programByName.data;
 
     });
