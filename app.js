@@ -3,7 +3,7 @@ var express     = require('express');
 var mongoose    = require('mongoose');
 var bodyParser  = require('body-parser');
 var router      = express.Router();
-var appRoutes   = require('./app/routes/api');
+var appRoutes   = require('./app/routes/api')(router);
 var app         = express();
 var path        = require('path');
 var passport    = require('passport');
@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use('/api', appRoutes);
-
-mongoose.connect('mongodb://localhost:27017/SculptureFitnessDB',{ useMongoClient: true }, function(err) {
+// mongodb://localhost:27017/SculptureFitnessDB
+mongoose.connect('mongodb://admin:admin@ds119080.mlab.com:19080/sculpturefitnessdb',{ useMongoClient: true }, function(err) {
     if(err) {
         console.log('Not connected to the database: ' + err);
     } else {
